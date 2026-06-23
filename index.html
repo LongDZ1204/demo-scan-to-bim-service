@@ -80,6 +80,9 @@ a{color:inherit;text-decoration:none}
 .rm-label::after{content:"";width:7px;height:7px;border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(45deg) translateY(-2px);transition:transform .3s var(--ease)}
 .rm-toggle:checked ~ .rm-label::before{content:"Read less"}
 .rm-toggle:checked ~ .rm-label::after{transform:rotate(-135deg)}
+/* brand opener (đ.2) folds into Read more on desktop too — only the definition (đ.1) stays visible */
+.intro .intro-brand{max-height:0;margin-bottom:0;overflow:hidden;transition:max-height .55s var(--ease),margin-bottom .55s var(--ease)}
+.rm-toggle:checked ~ .intro-brand{max-height:400px;margin-bottom:14px}
 
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
 .btn{font-family:var(--sans);font-weight:600;font-size:15.5px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .25s var(--ease);border:1.5px solid transparent}
@@ -183,7 +186,7 @@ a{color:inherit;text-decoration:none}
 .rm-arrow-btn.is-open:hover .rm-arrow{transform:rotate(180deg) translateY(2px)}
 /* tabs (radio-hack, no JS, sẵn-DOM) */
 .rv-tab-rd{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
-.rv-tabs-wrap{text-align:center;margin:26px 0 6px}
+.rv-tabs-wrap{text-align:center;margin:14px 0 6px}
 .rv-tabs{display:inline-flex;gap:4px;background:var(--bg-soft);border:1px solid var(--line);border-radius:40px;padding:5px}
 .rv-tab-lb{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;color:var(--muted);padding:9px 22px;border-radius:30px;cursor:pointer;transition:all .25s var(--ease);white-space:nowrap}
 .rv-tab-lb svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none}
@@ -215,6 +218,12 @@ a{color:inherit;text-decoration:none}
 .email-foot svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.2;fill:none}
 .email-tag{position:absolute;top:9px;right:9px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);background:#fff;border:1px solid var(--line);padding:2px 6px;border-radius:4px}
 .email-card{position:relative}
+/* email-PROOF cards = real redacted Gmail screenshots; uniform frame (đồng bộ) + rounded (bo góc), click → full-image lightbox */
+.email-shot{flex:0 0 360px}
+.shot-media{aspect-ratio:4/3;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}
+.shot-media img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.lb-overlay-shot .lb-shot{position:relative;z-index:1;width:min(880px,100%);max-height:88vh;overflow:auto;background:#fff;border-radius:16px;box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+.lb-overlay-shot .lb-shot img{width:100%;height:auto;display:block;border-radius:16px}
 /* lightbox via :target (no JS) */
 .lb-overlay{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:24px}
 .lb-overlay:target{display:flex}
@@ -598,7 +607,7 @@ a{color:inherit;text-decoration:none}
 .ql-intro{font-size:16px;color:var(--ink);line-height:1.6;max-width:830px;margin:0 auto}
 .ql-sub{font-size:15px;color:var(--muted);line-height:1.6;margin-top:14px}/* normal sans, matches the intro above (was mono uppercase) */
 /* tabbed measures (Option 3) — radio-hack, NO JS; tab bar = single row, swipeable on mobile */
-.ql-tabs{margin-top:32px}
+.ql-tabs{margin-top:32px;max-width:900px;margin-inline:auto}/* match §15 pricing width (900px) so the two tabbed sections line up */
 .ql-tabs > input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
 .ql-tabbar{display:flex;gap:8px;background:var(--bg-soft);border:1px solid var(--line);border-radius:13px;padding:7px;margin-bottom:24px;overflow-x:auto;scrollbar-width:none}
 .ql-tabbar::-webkit-scrollbar{display:none}
@@ -824,11 +833,11 @@ a{color:inherit;text-decoration:none}
 #pt1:checked ~ .ptab-panels .pp1,#pt2:checked ~ .ptab-panels .pp2,#pt3:checked ~ .ptab-panels .pp3{display:block}
 .ptab-r:focus-visible ~ .ptab-bar{outline:2px solid var(--orange-dk);outline-offset:2px}
 /* MAIN CTA — dark banner, CEO cutout left, blurred model bg, text + buttons right */
-.cta-main{position:relative;margin-top:42px;border-radius:16px;overflow:hidden;background:#16191D;min-height:460px;display:flex;flex-direction:row-reverse;align-items:stretch}
+.cta-main{position:relative;margin-top:42px;border-radius:16px;overflow:hidden;background:#16191D;min-height:360px;display:flex;flex-direction:row-reverse;align-items:stretch}
 .cta-bg{position:absolute;inset:0;background:url('https://vibimglobal.com/wp-content/uploads/2025/10/revit-bim-modeling-service-provider-768x576.jpg') center/cover no-repeat;filter:blur(3px) brightness(.42);transform:scale(1.08);z-index:0}
 .cta-scrim{position:absolute;inset:0;background:linear-gradient(270deg,rgba(12,14,17,.5) 0%,rgba(12,14,17,.78) 52%,rgba(12,14,17,.9) 100%);z-index:1}
-.cta-ceo{position:relative;z-index:2;flex:0 0 460px;align-self:stretch;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
-.cta-ceo img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%);mask-image:linear-gradient(90deg,transparent 0,#000 26%)}
+.cta-ceo{position:relative;z-index:2;flex:0 0 320px;align-self:stretch;overflow:hidden}
+.cta-ceo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 88%,transparent 100%)}
 .cta-body{position:relative;z-index:2;flex:1;padding:46px 50px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left}
 .cta-main .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:14px}
 .cta-main h3{font-family:var(--sans);font-size:clamp(24px,2.6vw,33px);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em;line-height:1.12;max-width:18ch}
@@ -988,8 +997,8 @@ a{color:inherit;text-decoration:none}
   .ptab-bar::-webkit-scrollbar{display:none}
   .ptab-btn{flex:0 0 auto;white-space:nowrap}
   .cta-main{flex-direction:column-reverse}
-  .cta-ceo{flex-basis:auto;align-self:center;width:100%;max-width:340px;max-height:300px}
-  .cta-ceo img{height:100%;object-fit:cover;object-position:top center;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%);mask-image:linear-gradient(180deg,transparent 0,#000 12%)}
+  .cta-ceo{flex-basis:auto;align-self:center;width:100%;max-width:320px;height:360px;max-height:none}
+  .cta-ceo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 88%,transparent 100%)}
   .cta-body{padding:34px 22px 6px}
   .cta-main .ctas .btn{width:100%;justify-content:center}
   .foot-grid{grid-template-columns:1fr}
@@ -1113,24 +1122,24 @@ a{color:inherit;text-decoration:none}
     <!-- TAB 1: email screenshots (placeholder — replace with real redacted Gmail captures) -->
     <div class="rv-panel rv-panel-email">
       <div class="rv-track" id="emailRail">
-        <a class="email-card" href="#ov-1"><span class="email-tag">SAMPLE</span>
-          <div class="email-top"><span class="email-ava">M</span><div><div class="email-from">M██████ (Contractor)</div><span class="email-redact"></span></div><span class="email-date">7 MAR</span></div>
-          <div class="email-body">Yes I have, there are more coming soon from this client in the next two weeks. Thank you for your excellent work on that project. There are actually two other large jobs I need your assistance with…</div>
+        <a class="email-card email-shot" href="#ov-1">
+          <div class="shot-media"><img src="https://i.postimg.cc/vB08pGy5/RPS-02.jpg" alt="Redacted client email praising ViBIM's delivered BIM model and asking about LOD 200 modeling of surrounding buildings" loading="lazy"></div>
           <div class="email-foot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Click to read full email</div>
         </a>
-        <a class="email-card" href="#ov-2"><span class="email-tag">SAMPLE</span>
-          <div class="email-top"><span class="email-ava">R</span><div><div class="email-from">R████ (Project Lead)</div><span class="email-redact"></span></div><span class="email-date">14 MAR</span></div>
-          <div class="email-body">Thank you so much for your work on the project. The model you have delivered is incredible! I was just wondering how many hours you think it would take to model the surrounding buildings in LOD 200…</div>
+        <a class="email-card email-shot" href="#ov-2">
+          <div class="shot-media"><img src="https://i.postimg.cc/DZxft7hM/RPS-04.jpg" alt="Redacted client email reviewing ViBIM's scan to BIM and Revit modeling work" loading="lazy"></div>
           <div class="email-foot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Click to read full email</div>
         </a>
-        <a class="email-card" href="#ov-3"><span class="email-tag">SAMPLE</span>
-          <div class="email-top"><span class="email-ava">S</span><div><div class="email-from">S████ (Survey Firm)</div><span class="email-redact"></span></div><span class="email-date">9 MAY</span></div>
-          <div class="email-body">The as-built came back clean and the QC report matched our control points exactly. Turnaround was faster than the two other vendors we trialled. We'll be sending the next site over shortly…</div>
+        <a class="email-card email-shot" href="#ov-3">
+          <div class="shot-media"><img src="https://i.postimg.cc/fL8W6MsB/TOW-01.jpg" alt="Redacted client email confirming good turnaround and communication on ViBIM projects" loading="lazy"></div>
           <div class="email-foot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Click to read full email</div>
         </a>
-        <a class="email-card" href="#ov-4"><span class="email-tag">SAMPLE</span>
-          <div class="email-top"><span class="email-ava">J</span><div><div class="email-from">J████ (Architect)</div><span class="email-redact"></span></div><span class="email-date">28 FEB</span></div>
-          <div class="email-body">Great communication across time zones and the revisions were turned around overnight. The federated model dropped straight into our coordination workflow with no rework. Highly recommended…</div>
+        <a class="email-card email-shot" href="#ov-4">
+          <div class="shot-media"><img src="https://i.postimg.cc/85ZkqTGy/TOW-02.jpg" alt="Redacted client email reviewing ViBIM's as-built BIM deliverables" loading="lazy"></div>
+          <div class="email-foot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Click to read full email</div>
+        </a>
+        <a class="email-card email-shot" href="#ov-5">
+          <div class="shot-media"><img src="https://i.postimg.cc/rmfyvqTn/TOW-04.jpg" alt="Redacted client email on ViBIM scan to BIM model quality and delivery" loading="lazy"></div>
           <div class="email-foot"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Click to read full email</div>
         </a>
       </div>
@@ -1150,35 +1159,12 @@ a{color:inherit;text-decoration:none}
 
   </div>
 
-  <!-- lightbox overlays (full emails) — :target, no JS -->
-  <div class="lb-overlay" id="ov-1"><a class="lb-back" href="#reviews"></a><div class="lb-email"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><div class="email-top"><span class="email-ava">M</span><div><div class="email-from">M██████ (Contractor)</div><span class="email-redact"></span></div><span class="email-date">7 MAR</span></div><div class="email-body">Hi T████,
-
-Yes I have, there are more coming soon from this client in the next two weeks. Thank you for your excellent work on that project.
-
-There are actually two other large jobs I need to get your assistance with, both of which we have already won (pricing is for additional works so there is no bid process).
-
-If I supply plans for the hospital projects tomorrow with photos, would you be able to help in pricing these works? Deliverables will be the same as the last project you priced previously.
-
-I will send more info tomorrow. Thank you.</div></div></div>
-  <div class="lb-overlay" id="ov-2"><a class="lb-back" href="#reviews"></a><div class="lb-email"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><div class="email-top"><span class="email-ava">R</span><div><div class="email-from">R████ (Project Lead)</div><span class="email-redact"></span></div><span class="email-date">14 MAR</span></div><div class="email-body">Hi Y██, T███ and T████,
-
-Thank you so much for your work on the project. The model you have delivered is incredible!
-
-I was just wondering how many hours you think it would take to model some of the surrounding buildings in LOD 200. The purpose is to capture the elevations of the buildings facing our project — height, windows and openings, that sort of detail.
-
-I know some of the data around these buildings is a little sparse, so we understand it may be difficult to model completely.
-
-If you could let me know the hours per building that would be great!</div></div></div>
-  <div class="lb-overlay" id="ov-3"><a class="lb-back" href="#reviews"></a><div class="lb-email"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><div class="email-top"><span class="email-ava">S</span><div><div class="email-from">S████ (Survey Firm)</div><span class="email-redact"></span></div><span class="email-date">9 MAY</span></div><div class="email-body">[Placeholder — replace with real redacted email]
-
-The as-built came back clean and the QC report matched our control points exactly. Turnaround was faster than the two other vendors we trialled this year.
-
-We'll be sending the next site over shortly. Appreciate the clear comms throughout.</div></div></div>
-  <div class="lb-overlay" id="ov-4"><a class="lb-back" href="#reviews"></a><div class="lb-email"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><div class="email-top"><span class="email-ava">J</span><div><div class="email-from">J████ (Architect)</div><span class="email-redact"></span></div><span class="email-date">28 FEB</span></div><div class="email-body">[Placeholder — replace with real redacted email]
-
-Great communication across time zones and the revisions were turned around overnight. The federated model dropped straight into our coordination workflow with no rework.
-
-Highly recommended for as-built work.</div></div></div>
+  <!-- lightbox overlays (full email screenshots) — :target, no JS -->
+  <div class="lb-overlay lb-overlay-shot" id="ov-1"><a class="lb-back" href="#reviews"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><img src="https://i.postimg.cc/vB08pGy5/RPS-02.jpg" alt="Redacted client email praising ViBIM's delivered BIM model and asking about LOD 200 modeling of surrounding buildings"></div></div>
+  <div class="lb-overlay lb-overlay-shot" id="ov-2"><a class="lb-back" href="#reviews"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><img src="https://i.postimg.cc/DZxft7hM/RPS-04.jpg" alt="Redacted client email reviewing ViBIM's scan to BIM and Revit modeling work"></div></div>
+  <div class="lb-overlay lb-overlay-shot" id="ov-3"><a class="lb-back" href="#reviews"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><img src="https://i.postimg.cc/fL8W6MsB/TOW-01.jpg" alt="Redacted client email confirming good turnaround and communication on ViBIM projects"></div></div>
+  <div class="lb-overlay lb-overlay-shot" id="ov-4"><a class="lb-back" href="#reviews"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><img src="https://i.postimg.cc/85ZkqTGy/TOW-02.jpg" alt="Redacted client email reviewing ViBIM's as-built BIM deliverables"></div></div>
+  <div class="lb-overlay lb-overlay-shot" id="ov-5"><a class="lb-back" href="#reviews"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close">&times;</a><img src="https://i.postimg.cc/rmfyvqTn/TOW-04.jpg" alt="Redacted client email on ViBIM scan to BIM model quality and delivery"></div></div>
 </section>
 
 <!-- ============ SECTION 4 — BY THE NUMBERS (compact, 1 row) ============ -->
@@ -2145,7 +2131,7 @@ Highly recommended for as-built work.</div></div></div>
       <div class="cta-bg"></div>
       <div class="cta-scrim"></div>
       <!-- team photo (anh-team-cta.png); on WordPress, upload to media library and swap src -->
-      <div class="cta-ceo"><img src="anh-team-cta.png" alt="ViBIM scan to BIM and Revit modeling team"></div>
+      <div class="cta-ceo"><img src="https://i.postimg.cc/d1FXYC6f/Thie-t-ke-chu-a-co-te-n-(2).png" alt="ViBIM scan to BIM and Revit modeling team"></div>
       <div class="cta-body">
         <div class="eyebrow">Free trial · Quote in 12–24h · NDA-protected</div>
         <h3>Want a fixed quote before you commit?</h3>
