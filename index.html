@@ -59,6 +59,11 @@ a{color:inherit;text-decoration:none}
 .col-right{flex:.96;display:flex;flex-direction:column;gap:22px}
 
 /* credential above H1 — certification seal + editorial text, NO chip bg (kills the AI-tag look) */
+.crumb{display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:13px;font-weight:600;letter-spacing:.01em;margin-bottom:20px}
+.crumb a{color:var(--muted);text-decoration:none;transition:color .2s var(--ease)}
+.crumb a:hover{color:var(--orange)}
+.crumb-sep{color:var(--orange);font-weight:700}
+.crumb-cur{color:var(--orange)}
 .credential{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 11px;align-self:flex-start;margin-bottom:22px;max-width:100%}
 .cred-claim{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}/* claim never breaks mid-phrase */
 .cred-tick{flex:0 0 auto;width:17px;height:17px}
@@ -1048,8 +1053,13 @@ a{color:inherit;text-decoration:none}
 <section class="hero">
   <div class="wrap hero-grid">
 
-    <!-- LEFT: trust pill → H1 → full intro → CTA -->
+    <!-- LEFT: breadcrumb → trust pill → H1 → full intro → CTA -->
     <div class="col-left">
+      <nav class="crumb reveal" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="crumb-sep" aria-hidden="true">›</span>
+        <span class="crumb-cur" aria-current="page">Point Cloud Scan to BIM Services</span>
+      </nav>
       <span class="credential reveal">
         <span class="cred-claim"><span class="cred-tick"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.3 12.5l2.4 2.4 4.8-5.2"/></svg></span><b>ISO 19650 and PAS 1192-aligned</b></span>
         <span class="cred-dot" aria-hidden="true"></span>
