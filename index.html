@@ -404,7 +404,7 @@ a{color:inherit;text-decoration:none}
 .proc-item[open] .proc-summary{background:var(--blue-soft)}
 .proc-num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:14px;color:var(--muted);background:#fff;border:2px solid var(--line);transition:all .25s var(--ease)}
 .proc-item[open] .proc-num{background:var(--blue);border-color:var(--blue);color:#fff}
-.proc-ptitle{flex:1;font-size:16.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;line-height:1.25}
+.proc-ptitle{flex:1;font-size:16.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;line-height:1.25;margin:0}
 .proc-chev{flex:0 0 auto;width:20px;height:20px;stroke:var(--muted);stroke-width:2.2;fill:none;transition:transform .3s var(--ease)}
 .proc-item[open] .proc-chev{transform:rotate(180deg);stroke:var(--blue)}
 .proc-body{padding:18px 24px 22px 67px}
@@ -731,7 +731,7 @@ a{color:inherit;text-decoration:none}
 .proj-img{aspect-ratio:16/10;width:100%;object-fit:cover;display:block;background:var(--bg-soft)}
 .proj-body{padding:17px 18px 19px;display:flex;flex-direction:column;gap:9px;flex:1}
 .proj-tag{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);font-weight:600}
-.proj h3{font-size:17px;font-weight:700;color:var(--head);line-height:1.35}
+.proj .proj-t{font-size:17px;font-weight:700;color:var(--head);line-height:1.35}
 .proj .meta{font-size:13.5px;color:var(--muted);margin-top:auto}
 .proj-link{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--blue);margin-top:4px}
 .proj-link svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none;transition:transform .25s var(--ease)}
@@ -763,7 +763,7 @@ a{color:inherit;text-decoration:none}
 .why-team{margin-top:0}
 .exp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:6px}
 .exp-head-l{display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex:0 0 auto;max-width:34ch}
-.exp-head h3{font-size:clamp(18px,1.9vw,22px);font-weight:700;color:var(--head);line-height:1.25}
+.exp-head .exp-title{font-size:clamp(18px,1.9vw,22px);font-weight:700;color:var(--head);line-height:1.25}
 .exp-head p{font-size:15px;color:var(--ink);max-width:56ch;flex:1 1 auto;margin-top:2px}
 .exp-allink{display:inline-flex;align-items:center;gap:7px;color:var(--orange);font-weight:700;font-size:14.5px;margin-top:3px;transition:gap .25s var(--ease)}
 .exp-allink svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -832,7 +832,7 @@ a{color:inherit;text-decoration:none}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .step{border:1px solid var(--line);border-radius:10px;padding:22px 20px;background:#fff}
 .step-n{width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;font-weight:700;display:grid;place-items:center;font-family:var(--mono);margin-bottom:13px}
-.step h4{font-size:16px;font-weight:700;color:var(--head);margin-bottom:7px}
+.step .step-t{font-size:16px;font-weight:700;color:var(--head);margin-bottom:7px}
 .step p{font-size:14.5px;color:var(--ink);line-height:1.55}
 .factors{display:grid;grid-template-columns:1fr 1fr;gap:14px 32px;list-style:none}
 .factor{display:flex;gap:12px;font-size:14.5px;color:var(--ink);line-height:1.5}
@@ -911,7 +911,7 @@ a{color:inherit;text-decoration:none}
 .res-card:hover{border-color:var(--orange);box-shadow:var(--shadow-sm)}
 .res-ic{width:44px;height:44px;border-radius:9px;background:var(--orange-soft);display:grid;place-items:center}
 .res-ic svg{width:23px;height:23px;stroke:var(--orange-dk);stroke-width:1.8;fill:none}
-.res-card h4{font-size:15px;font-weight:700;color:var(--head);line-height:1.4;flex:1}
+.res-card .res-t{font-size:15px;font-weight:700;color:var(--head);line-height:1.4;flex:1}
 .res-dl{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--blue)}
 .res-dl svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;fill:none}
 #resDots{display:none}  /* dots only on mobile slider */
@@ -921,7 +921,8 @@ a{color:inherit;text-decoration:none}
 .faq-item{border:1px solid var(--line);border-radius:8px;background:#fff;overflow:hidden}
 .faq-item summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;font-weight:600;font-size:16px;color:var(--head)}
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-q{flex:1}
+.faq-q{flex:1;margin:0;font-size:inherit;font-weight:inherit;line-height:inherit;color:inherit}
+.ptab-h3{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em;line-height:1.2;margin:0 0 14px}
 .faq-chev{flex:0 0 auto;margin-top:6px;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .3s var(--ease)}
 .faq-item[open] .faq-chev{transform:rotate(-135deg)}
 .faq-body{padding:0 20px 20px 20px;font-size:15px;color:var(--ink);line-height:1.65}
@@ -937,8 +938,8 @@ a{color:inherit;text-decoration:none}
 .gb-card .gb-img{aspect-ratio:16/9}
 .gb-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .gb-feat .gb-body{padding:24px}
-.gb-body h3{font-size:21px;font-weight:800;color:var(--head);line-height:1.22;letter-spacing:-.01em}
-.gb-body h4{font-size:15.5px;font-weight:700;color:var(--head);line-height:1.3}
+.gb-body .gb-t3{font-size:21px;font-weight:800;color:var(--head);line-height:1.22;letter-spacing:-.01em}
+.gb-body .gb-t4{font-size:15.5px;font-weight:700;color:var(--head);line-height:1.3}
 .gb-body p{font-size:14px;color:var(--ink);line-height:1.55}
 .gb-more{margin-top:auto;font-weight:600;font-size:14px;color:var(--blue)}
 .gb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -1499,7 +1500,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc" open>
         <summary class="proc-summary">
           <span class="proc-num">1</span>
-          <span class="proc-ptitle">Project Setup</span>
+          <h3 class="proc-ptitle">Project Setup</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1517,7 +1518,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc">
         <summary class="proc-summary">
           <span class="proc-num">2</span>
-          <span class="proc-ptitle">Discipline Modeling</span>
+          <h3 class="proc-ptitle">Discipline Modeling</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1534,7 +1535,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc">
         <summary class="proc-summary">
           <span class="proc-num">3</span>
-          <span class="proc-ptitle">Validation &amp; Families</span>
+          <h3 class="proc-ptitle">Validation &amp; Families</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1550,7 +1551,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc">
         <summary class="proc-summary">
           <span class="proc-num">4</span>
-          <span class="proc-ptitle">Coordination &amp; QC</span>
+          <h3 class="proc-ptitle">Coordination &amp; QC</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1577,7 +1578,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc">
         <summary class="proc-summary">
           <span class="proc-num">5</span>
-          <span class="proc-ptitle">Submission &amp; Revision</span>
+          <h3 class="proc-ptitle">Submission &amp; Revision</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1594,7 +1595,7 @@ a{color:inherit;text-decoration:none}
       <details class="proc-item" name="proc">
         <summary class="proc-summary">
           <span class="proc-num">6</span>
-          <span class="proc-ptitle">Final Delivery</span>
+          <h3 class="proc-ptitle">Final Delivery</h3>
           <svg class="proc-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="proc-body">
@@ -1622,18 +1623,18 @@ a{color:inherit;text-decoration:none}
     <div class="fmt-grid">
       <article class="fmt-card">
         <span class="fmt-badge">.RCP / .RCS</span>
-        <h4 class="fmt-name">ReCap native formats</h4>
+        <div class="fmt-name">ReCap native formats</div>
         <p class="fmt-desc">Native ReCap point cloud formats, preferred for the smoothest workflow.</p>
         <span class="fmt-spec">Keep each RCS under 5 GB per file</span>
       </article>
       <article class="fmt-card">
         <span class="fmt-badge">.E57</span>
-        <h4 class="fmt-name">Open interchange standard</h4>
+        <div class="fmt-name">Open interchange standard</div>
         <p class="fmt-desc">The open interchange standard, used when data comes from other software or scanners.</p>
       </article>
       <article class="fmt-card">
         <span class="fmt-badge">.ZIP</span>
-        <h4 class="fmt-name">Zipped datasets</h4>
+        <div class="fmt-name">Zipped datasets</div>
         <p class="fmt-desc">Multiple files packed into a single .zip for transfer.</p>
       </article>
     </div>
@@ -1826,7 +1827,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-revit-modelling-for-uk-projects.jpg" alt="As-built Revit BIM model of commercial complexes in the UK, modeled from a point cloud">
         <div class="proj-body">
           <span class="proj-tag">Commercial · LOD 300</span>
-          <h3>Revit Modeling for Commercial Complexes at UK</h3>
+          <div class="proj-t">Revit Modeling for Commercial Complexes at UK</div>
           <p class="meta">Architecture and structure, registered point cloud</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-commercial-complexes-in-the-uk/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1835,7 +1836,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/06/project-type-train-station-scaled.jpg" alt="As-built Revit BIM model of a train station in Canada from scan data">
         <div class="proj-body">
           <span class="proj-tag">Transport · LOD 300</span>
-          <h3>Revit Modeling for a Train Station at Canada</h3>
+          <div class="proj-t">Revit Modeling for a Train Station at Canada</div>
           <p class="meta">Structure and platform canopy from terrestrial scan</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-train-station-at-canada/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1844,7 +1845,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/point-cloud-to-revit-for-heritage-sites.jpg" alt="As-built Revit BIM model of historical churches in the UK from laser scan data">
         <div class="proj-body">
           <span class="proj-tag">Heritage · LOD 300</span>
-          <h3>Revit Modeling for Historical Churches at UK</h3>
+          <div class="proj-t">Revit Modeling for Historical Churches at UK</div>
           <p class="meta">Decorative geometry captured from terrestrial scan</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-historical-churches-at-uk/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1853,7 +1854,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-hospital-revit-modeling-canada.jpg" alt="As-built Revit BIM model of a hospital complex in Canada from scan data">
         <div class="proj-body">
           <span class="proj-tag">Healthcare · LOD 350</span>
-          <h3>Revit Modeling for a Hospital Complex at Canada</h3>
+          <div class="proj-t">Revit Modeling for a Hospital Complex at Canada</div>
           <p class="meta">MEP-heavy clinical layout, clash-checked</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-services-for-hospital-complex-at-canada/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1862,7 +1863,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/scan-to-bim-for-education-buildings-uk-scaled.jpg" alt="As-built Revit BIM model of a museum building in Australia">
         <div class="proj-body">
           <span class="proj-tag">Cultural · LOD 300</span>
-          <h3>Revit Modeling for a Museum at Australia</h3>
+          <div class="proj-t">Revit Modeling for a Museum at Australia</div>
           <p class="meta">Multi-volume architecture and structure</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-museum-project-at-australia/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1871,7 +1872,7 @@ a{color:inherit;text-decoration:none}
         <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/mep-bim-services-for-industrial-facilities-usa-1.jpg" alt="As-built Revit BIM model of MEP systems at a US industrial factory from point cloud">
         <div class="proj-body">
           <span class="proj-tag">Industrial · LOD 400</span>
-          <h3>Revit Modeling for MEP Systems at a US Industrial Factory</h3>
+          <div class="proj-t">Revit Modeling for MEP Systems at a US Industrial Factory</div>
           <p class="meta">Dense MEP systems, fabrication-level detail</p>
           <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-mep-systems-at-industrial-factory-in-the-united-states/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1943,7 +1944,7 @@ a{color:inherit;text-decoration:none}
     <div class="why-team">
       <div class="exp-head">
         <div class="exp-head-l">
-          <h3>The specialists behind every scan to BIM model</h3>
+          <div class="exp-title">The specialists behind every scan to BIM model</div>
         </div>
       </div>
       <!-- 5 specialists — SAME as /our-team/ homepage lineup (founder + Architecture/Structure/MEP leads + PM). Back-office (IT, Accounting) excluded per dev-build-standard §4. Identity-first bios verbatim from homepage. Only Pham Thanh carries a per-card link. -->
@@ -2110,6 +2111,7 @@ a{color:inherit;text-decoration:none}
       <div class="ptab-panels">
 
         <div class="ptab-panel pp1">
+    <h3 class="ptab-h3">Turnaround Time</h3>
     <p class="sub-lead">Scan to BIM turnaround depends on building size, LOD and deliverable complexity, and runs up to 30% faster than industry norms thanks to automation and Revit API workflows. We confirm a delivery timeline with your scope before work begins. Typical turnaround by project size is shown below:</p>
     <table class="price-table">
       <thead><tr><th>Project hours</th><th>Estimated turnaround (business days)</th></tr></thead>
@@ -2129,16 +2131,18 @@ a{color:inherit;text-decoration:none}
         </div>
 
         <div class="ptab-panel pp2">
+    <h3 class="ptab-h3">How to Get Started</h3>
     <p class="sub-lead">Getting started with ViBIM takes three steps: send your point cloud data, receive a free trial model and scope estimate, then approve the full project. This engagement model lets you verify quality and fit before any commitment.</p>
     <div class="steps">
-      <div class="step"><div class="step-n">1</div><h4>Contact &amp; share data</h4><p>Contact us and share your point cloud dataset.</p></div>
-      <div class="step"><div class="step-n">2</div><h4>Receive a quote</h4><p>Get a quote — Scope of Work, timeline and pricing — in 12 to 24 hours.</p></div>
-      <div class="step"><div class="step-n">3</div><h4>Approve &amp; start</h4><p>Approve and start, with a dedicated project manager assigned.</p></div>
+      <div class="step"><div class="step-n">1</div><div class="step-t">Contact &amp; share data</div><p>Contact us and share your point cloud dataset.</p></div>
+      <div class="step"><div class="step-n">2</div><div class="step-t">Receive a quote</div><p>Get a quote — Scope of Work, timeline and pricing — in 12 to 24 hours.</p></div>
+      <div class="step"><div class="step-n">3</div><div class="step-t">Approve &amp; start</div><p>Approve and start, with a dedicated project manager assigned.</p></div>
     </div>
     <p class="note-line">A typical project runs 1 to 3 weeks end to end, with payment by SWIFT, Wise or corporate e-banking.</p>
         </div>
 
         <div class="ptab-panel pp3">
+    <h3 class="ptab-h3">Pricing Factors</h3>
     <p class="sub-lead">Scan to BIM pricing is driven by six factors: project scope, required LOD and LOI, modeling tolerance, point cloud quality, model size and coordination complexity, rather than a flat per-square-foot rate. Pricing is scoped per project, quoted on an hourly-rate basis or as a lump-sum. The six factors that move the price are:</p>
     <ul class="factors">
       <li class="factor"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><b>Project scope:</b> the number of disciplines and the floor area, in square feet, in the model.</span></li>
@@ -2432,22 +2436,22 @@ a{color:inherit;text-decoration:none}
     <div class="res-grid" id="resRail">
       <div class="res-card">
         <div class="res-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
-        <h4>Architectural Scan to BIM Modeling Review Checklist</h4>
+        <div class="res-t">Architectural Scan to BIM Modeling Review Checklist</div>
         <a class="res-dl" href="#quote">Download <svg viewBox="0 0 24 24"><path d="M12 4v12M6 12l6 6 6-6M4 21h16"/></svg></a>
       </div>
       <div class="res-card">
         <div class="res-ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h4>Structural Scan to BIM Modeling Review Checklist</h4>
+        <div class="res-t">Structural Scan to BIM Modeling Review Checklist</div>
         <a class="res-dl" href="#quote">Download <svg viewBox="0 0 24 24"><path d="M12 4v12M6 12l6 6 6-6M4 21h16"/></svg></a>
       </div>
       <div class="res-card">
         <div class="res-ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h4>MEP Scan to BIM Modeling Review Checklist</h4>
+        <div class="res-t">MEP Scan to BIM Modeling Review Checklist</div>
         <a class="res-dl" href="#quote">Download <svg viewBox="0 0 24 24"><path d="M12 4v12M6 12l6 6 6-6M4 21h16"/></svg></a>
       </div>
       <div class="res-card">
         <div class="res-ic"><svg viewBox="0 0 24 24"><path d="M9 20 3 17V4l6 3 6-3 6 3v13l-6-3-6 3zM9 7v13M15 4v13"/></svg></div>
-        <h4>Topography Scan to BIM Modeling Review Checklist</h4>
+        <div class="res-t">Topography Scan to BIM Modeling Review Checklist</div>
         <a class="res-dl" href="#quote">Download <svg viewBox="0 0 24 24"><path d="M12 4v12M6 12l6 6 6-6M4 21h16"/></svg></a>
       </div>
     </div>
@@ -2464,39 +2468,39 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="faq-list">
       <details class="faq-item" name="faqgroup" open>
-        <summary><span class="faq-q">Is scan to BIM a software or a service?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">Is scan to BIM a software or a service?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Scan to BIM is a service, not a software. It is the professional process of converting point cloud scan data into a parametric BIM model, delivered by modelers like ViBIM. Software such as Revit and ReCap is only the toolset our team operates; what you receive is a finished, QC-verified as-built model, not a software license.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">How accurate are your point cloud to BIM models?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">How accurate are your point cloud to BIM models?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Point cloud to BIM models from ViBIM are verified element by element against your source scan through two-layer independent QC, so the model reflects real conditions to the resolution of your point cloud. Final accuracy is governed by scan quality (point density, coverage, registration) and the LOD you choose, with QC run to ISO 19650 and PAS 1192 under independent US and UK checks, rather than a single fixed tolerance.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">What point cloud formats do you accept?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">What point cloud formats do you accept?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Point cloud formats we accept include all common types, RCP, RCS and E57, from any scanner or capture method. Keep each RCS under 5 GB per file, or send the dataset as a single .zip. We are scanner-agnostic with no on-site visit needed, and confirm compatibility before the project starts if your data is in another format.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">What file formats do you deliver?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">What file formats do you deliver?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">File formats we deliver are typically three: .RVT for native Revit workflows, .IFC for open BIM exchange (IFC2x3 or IFC4), and .DWG for 2D CAD sheets. We agree the deliverable formats during project setup so the model drops straight into your workflow.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">How much do scan to BIM services cost?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">How much do scan to BIM services cost?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Scan to BIM services cost depends on building size, LOD and deliverable type, not a flat per-square-foot rate. Each project is scoped individually on an hourly-rate or lump-sum basis, before you commit; the cost drivers are broken down in our <a href="https://vibimglobal.com/blog/scan-to-bim-cost/" style="color:var(--blue);font-weight:600">scan to BIM pricing guide</a>.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">How long does a scan to BIM project take?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">How long does a scan to BIM project take?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">A scan to BIM project's turnaround depends on building size, LOD and deliverable type, driven by total modeling hours rather than a fixed calendar, with on-time delivery the norm. ViBIM returns a turnaround estimate within 12 to 24 hours of receiving your point cloud, and the full size-to-time table is shown above.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">Which LOD do you deliver?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">Which LOD do you deliver?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">The LOD we deliver spans 100 to 500, at the level your project requires. LOD 300 is the most common for scan to BIM, LOD 350 supports MEP coordination, and LOD 500 gives a field-verified as-built. LOD (Level of Development) combines geometric detail and reliability; LOI (Level of Information), the non-geometric data, is set separately, and neither is Revit's display-only Detail Level.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">Can I upgrade as-built CAD drawings to BIM later?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">Can I upgrade as-built CAD drawings to BIM later?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Yes. As-built CAD drawings can be upgraded to a full BIM model later, because both come from the same point cloud. ViBIM can deliver 2D as-built drawings now and rebuild them into a parametric Revit model from the identical scan whenever your project needs it, with no need to re-scan.</div>
       </details>
       <details class="faq-item" name="faqgroup">
-        <summary><span class="faq-q">Do you sign an NDA and offer a free trial?</span><span class="faq-chev"></span></summary>
+        <summary><h3 class="faq-q">Do you sign an NDA and offer a free trial?</h3><span class="faq-chev"></span></summary>
         <div class="faq-body">Yes. An NDA is signed on request, and a free trial model lets you assess scan to BIM quality before committing. The trial is a demo model built on your own sample data that also calibrates QC to your standards, and only your dedicated PM transfers files over secure channels (FTP, Box, Cintoo or ACC).</div>
       </details>
     </div>
@@ -2542,7 +2546,7 @@ a{color:inherit;text-decoration:none}
       <a class="gb-feat" href="/blog/what-is-scan-to-bim/">
         <span class="gb-img" style="background-image:url('https://vibimglobal.com/wp-content/uploads/2025/06/3d-point-cloud-to-bim.jpg')"></span>
         <div class="gb-body">
-          <h3>Scan to BIM workflow</h3>
+          <div class="gb-t3">Scan to BIM workflow</div>
           <p>How a scan to BIM project runs end to end, from point cloud capture to a QC-verified Revit model.</p>
           <span class="gb-more">Read guide →</span>
         </div>
@@ -2550,19 +2554,19 @@ a{color:inherit;text-decoration:none}
       <div class="gb-grid">
         <a class="gb-card" href="/blog/benefits-of-scan-to-bim/">
           <span class="gb-img" style="background-image:url('https://vibimglobal.com/wp-content/uploads/2025/07/why-is-scan-to-bim-difficult.jpeg')"></span>
-          <div class="gb-body"><h4>Scan to BIM advantages</h4><p>Why teams convert point clouds to BIM, and where it pays off.</p></div>
+          <div class="gb-body"><div class="gb-t4">Scan to BIM advantages</div><p>Why teams convert point clouds to BIM, and where it pays off.</p></div>
         </a>
         <a class="gb-card" href="/blog/point-cloud-to-bim/">
           <span class="gb-img" style="background-image:url('https://vibimglobal.com/wp-content/uploads/2025/07/point-cloud-data-to-3d-model.jpg')"></span>
-          <div class="gb-body"><h4>Point cloud to BIM modeling</h4><p>How point cloud data becomes a parametric BIM model.</p></div>
+          <div class="gb-body"><div class="gb-t4">Point cloud to BIM modeling</div><p>How point cloud data becomes a parametric BIM model.</p></div>
         </a>
         <a class="gb-card" href="/blog/best-scan-to-bim-software/">
           <span class="gb-img" style="background-image:url('https://vibimglobal.com/wp-content/uploads/2025/07/scan-to-bim-software-2.jpg.webp')"></span>
-          <div class="gb-body"><h4>Best scan to BIM software</h4><p>The tools used for scan to BIM, and how they compare.</p></div>
+          <div class="gb-body"><div class="gb-t4">Best scan to BIM software</div><p>The tools used for scan to BIM, and how they compare.</p></div>
         </a>
         <a class="gb-card" href="/blog/convert-point-cloud-to-revit-model/">
           <span class="gb-img" style="background-image:url('https://vibimglobal.com/wp-content/uploads/2025/07/point-cloud-model-1.jpg')"></span>
-          <div class="gb-body"><h4>Convert point cloud to Revit model</h4><p>Step by step, turning a point cloud into a Revit model.</p></div>
+          <div class="gb-body"><div class="gb-t4">Convert point cloud to Revit model</div><p>Step by step, turning a point cloud into a Revit model.</p></div>
         </a>
       </div>
     </div>
