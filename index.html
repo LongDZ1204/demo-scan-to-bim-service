@@ -352,8 +352,6 @@ a{color:inherit;text-decoration:none}
 .deliv-ph-tag{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:#aab4bf;border:1px dashed #c2ccd6;padding:1px 6px;border-radius:4px}
 .deliv-num{display:none}/* number badge removed per B.Long */
 /* file-type badge overlay (top-right) = the deliverable's identity, differentiates from §5 trade cards */
-.deliv-fb{position:absolute;top:10px;right:10px;display:flex;gap:5px;z-index:2}
-.deliv-fb span{font-family:var(--mono);font-size:10.5px;font-weight:600;color:#fff;background:rgba(245,131,25,.94);backdrop-filter:blur(4px);padding:3px 7px;border-radius:6px;letter-spacing:.03em}
 .deliv-body{display:flex;flex-direction:column;flex:1;padding:16px 17px 18px}
 .deliv-name{font-size:16.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:7px;line-height:1.2}
 .deliv-def{font-size:13.5px;color:var(--ink);line-height:1.5;margin-bottom:14px}
@@ -468,7 +466,13 @@ a{color:inherit;text-decoration:none}
 /* ============ RESPONSIVE ============ */
 /* §5 + §6 grids: 4 cols ≥1080 → 2 cols 600–1080 → 1 col <600 (keeps cards from going huge on tablet) */
 @media(max-width:1080px){.disc-grid,.deliv-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.disc-grid,.deliv-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.disc-grid{grid-template-columns:1fr}}
+/* §6 Deliverables mobile: 1-row horizontal snap slider (not stacked) */
+@media(max-width:600px){
+  .deliv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-2px;padding:2px 2px 8px}
+  .deliv-grid::-webkit-scrollbar{display:none}
+  .deliv-card{flex:0 0 84%;scroll-snap-align:start}
+}
 /* §8 formats: 3 cols → 1 col below 640 */
 @media(max-width:640px){.fmt-grid{grid-template-columns:1fr}}
 @media(max-width:920px){
@@ -1375,13 +1379,13 @@ a{color:inherit;text-decoration:none}
           <!-- PROD: <img src="…as-built-drawings.jpg" alt="As-built 2D CAD drawing in DWG with floor plan, section and elevation generated from point cloud" loading="lazy" width="300" height="170"> -->
           <img src="https://vibimglobal.com/wp-content/uploads/2025/10/revit-3d-bim-modelling-services.jpg" alt="As-built drawings package in DWG with floor plan, section and elevation generated from point cloud" loading="lazy">
           <span class="deliv-num">01</span>
-          <span class="deliv-fb"><span>.DWG</span></span>
         </div>
         <div class="deliv-body">
           <h3 class="deliv-name">As-Built Drawings</h3>
           <p class="deliv-def">As-built drawings are 2D CAD plans, sections and elevations generated from your point cloud to document a structure exactly as it stands. Dimensioned as-built drawings are produced in DWG from the same scan, suitable for renovation, permitting and facility records.</p>
           <div class="deliv-meta">
             <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Floor plans, sections and elevations</span></div>
+            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.DWG CAD sheets</span></div>
             <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Permit submission, renovation, retrofit and record drawings</span></div>
           </div>
           <a class="deliv-link" href="/as-built-drawing/">As-built drawings
@@ -1395,13 +1399,13 @@ a{color:inherit;text-decoration:none}
           <!-- PROD: <img src="…as-built-bim-model.jpg" alt="As-built 3D parametric Revit model of existing building conditions captured by laser scan" loading="lazy" width="300" height="170"> -->
           <img src="https://vibimglobal.com/wp-content/uploads/2025/10/revit-model-outsourcing.jpg" alt="As-built 3D parametric Revit model of existing building conditions captured by laser scan" loading="lazy">
           <span class="deliv-num">02</span>
-          <span class="deliv-fb"><span>.RVT</span><span>.IFC</span></span>
         </div>
         <div class="deliv-body">
           <h3 class="deliv-name">As-Built BIM Modeling</h3>
           <p class="deliv-def">As-built BIM modeling is a 3D parametric Revit model that reflects the real, existing conditions of a building captured by laser scan. The as-built model is built element by element in Revit at your required LOD, ready for design, coordination or renovation.</p>
           <div class="deliv-meta">
             <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Parametric as-built objects with their parameters, not just surfaces, at your project's LOD</span></div>
+            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RVT and .IFC, in IFC2x3 or IFC4</span></div>
             <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Lifecycle, coordination and downstream design</span></div>
           </div>
           <a class="deliv-link" href="/as-built-bim-modeling/">As-built BIM modeling
@@ -1415,13 +1419,13 @@ a{color:inherit;text-decoration:none}
           <!-- PROD: <img src="…revit-family.jpg" alt="Custom parametric Revit family of a door or window component matched to scanned geometry" loading="lazy" width="300" height="170"> -->
           <img src="https://vibimglobal.com/wp-content/uploads/2025/10/revit-modeling-outsourcing-services.jpg" alt="Custom parametric Revit family components matched to scanned geometry" loading="lazy">
           <span class="deliv-num">03</span>
-          <span class="deliv-fb"><span>.RFA</span></span>
         </div>
         <div class="deliv-body">
           <h3 class="deliv-name">Revit Family Creation</h3>
           <p class="deliv-def">Revit family creation is the modeling of custom parametric components, such as doors, windows, fixtures and equipment, that match the exact items captured in your scan. We build reusable point cloud to Revit families with the parameters and detail your project workflow requires.</p>
           <div class="deliv-meta">
             <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Custom loadable families, with their parameter sets and types, matched to real product or fabrication geometry</span></div>
+            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RFA that loads into the BIM model</span></div>
             <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Component libraries, manufacturer families and fabrication-ready content</span></div>
           </div>
           <a class="deliv-link" href="/revit-family-creation/">Revit family creation
@@ -1435,13 +1439,13 @@ a{color:inherit;text-decoration:none}
           <!-- PROD: <img src="…bim-for-fm.jpg" alt="BIM model enriched with asset data and LOI for facility management, ready for a CAFM system" loading="lazy" width="300" height="170"> -->
           <img src="https://vibimglobal.com/wp-content/uploads/2025/10/3d-bim-modeling-services.jpg" alt="BIM model enriched with asset data and LOI for facility management, ready for a CAFM system" loading="lazy">
           <span class="deliv-num">04</span>
-          <span class="deliv-fb"><span>.RVT</span><span>.IFC</span></span>
         </div>
         <div class="deliv-body">
           <h3 class="deliv-name">BIM for Facility Management</h3>
           <p class="deliv-def">BIM for facility management is an as-built model enriched with asset data, so building owners can operate, maintain and plan from a single source of truth. The model is structured with the asset information and LOI your facility team needs to link it to CAFM or FM systems.</p>
           <div class="deliv-meta">
             <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Asset data on equipment and components, space and room data, and non-graphic information, the LOI or Level of Information, prepared for operations</span></div>
+            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">A data-rich .RVT or .IFC model ready for an FM or CAFM system</span></div>
             <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Owner handover, operations and maintenance, asset and space management</span></div>
           </div>
           <a class="deliv-link" href="/bim-for-facility-management/">BIM for facility management
