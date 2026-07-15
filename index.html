@@ -244,10 +244,8 @@ a{color:inherit;text-decoration:none}
 .lb-email .email-body{display:block;-webkit-line-clamp:initial;overflow:visible;padding:20px;font-size:14.5px;white-space:pre-line}
 .lb-close{position:absolute;top:-14px;right:-14px;z-index:2;width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);display:grid;place-items:center;font-size:20px;color:var(--navy);font-weight:600}
 /* text card (Tab 2) — plain quote, height-optimized */
-.txt-card{flex:0 0 320px;height:300px;scroll-snap-align:start;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);padding:22px 22px 18px}
-.txt-card:nth-child(even){background:var(--bg-soft)}
+.txt-card{flex:0 0 380px;height:300px;scroll-snap-align:start;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;background:var(--bg-soft);box-shadow:var(--shadow-sm);padding:24px 24px 18px}
 .txt-quote{font-size:22px;line-height:1;color:var(--orange);font-weight:800;margin-bottom:6px}
-.txt-title{font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .txt-body{font-size:14px;color:var(--ink);line-height:1.55;flex:1;min-height:0;overflow-y:auto;padding-right:10px;scrollbar-width:thin;scrollbar-color:#c8d2dd transparent}
 .txt-body::-webkit-scrollbar{width:6px}
 .txt-body::-webkit-scrollbar-thumb{background:#c8d2dd;border-radius:3px}
@@ -255,7 +253,6 @@ a{color:inherit;text-decoration:none}
 .txt-meta{display:flex;align-items:center;gap:9px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .txt-ini{width:32px;height:32px;border-radius:50%;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-weight:700;font-size:13px;flex:0 0 auto}
 .txt-who{font-size:13px;font-weight:600;color:var(--navy);line-height:1.25}
-.txt-role{font-size:12px;color:var(--muted);font-weight:400}
 
 /* ===== Section 4 — By the Numbers (compact proof strip, ALWAYS 1 row) ===== */
 .bytenum{position:relative;overflow:hidden;background:var(--orange-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -353,7 +350,14 @@ a{color:inherit;text-decoration:none}
 .deliv-body{display:flex;flex-direction:column;flex:1;padding:16px 17px 18px}
 .deliv-name{font-size:16.5px;font-weight:700;color:var(--navy);letter-spacing:-.01em;margin-bottom:7px;line-height:1.2}
 .deliv-def{font-size:13.5px;color:var(--ink);line-height:1.5;margin-bottom:14px}
-.deliv-meta{display:flex;flex-direction:column;gap:11px;margin-bottom:16px}
+.deliv-meta{display:flex;flex-direction:column;gap:11px}
+/* collapsed detail block (Included/Output/Use case) — native <details>, full text stays in DOM, only visually compressed */
+.deliv-details{margin-bottom:16px}
+.deliv-sum{list-style:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--orange-dk);padding:2px 0;user-select:none}
+.deliv-sum::-webkit-details-marker{display:none}
+.deliv-sum svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.6;fill:none;transition:transform .25s var(--ease)}
+.deliv-details[open] .deliv-sum svg{transform:rotate(180deg)}
+.deliv-details[open] .deliv-meta{margin-top:12px}
 .deliv-row{display:flex;flex-direction:column;gap:4px;font-size:12.5px;line-height:1.5}
 .deliv-key{font-weight:700;color:var(--ink);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
 .deliv-key::after{content:":"}
@@ -362,6 +366,7 @@ a{color:inherit;text-decoration:none}
 .deliv-link svg{width:15px;height:15px;stroke:currentColor;stroke-width:2.2;fill:none;transition:transform .25s var(--ease)}
 .deliv-link:hover{color:var(--orange)}
 .deliv-link:hover svg{transform:translateX(4px)}
+.slider-dots.deliv-dots{display:none}/* dots only on the mobile 1-row slider (matches §3 reviews / §16 markets); 2-class selector beats base .slider-dots{display:flex} */
 
 /* ===== CTA Banner (after Deliverables) — real ViBIM photo + dark shadow overlay; orange stays the brand accent ===== */
 /* PROD: self-host the bg image (currently hotlinked from vibimglobal.com) */
@@ -469,6 +474,7 @@ a{color:inherit;text-decoration:none}
   .deliv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-2px;padding:2px 2px 8px}
   .deliv-grid::-webkit-scrollbar{display:none}
   .deliv-card{flex:0 0 84%;scroll-snap-align:start}
+  .slider-dots.deliv-dots{display:flex}
 }
 /* §8 formats: 3 cols → 1 col below 640 */
 @media(max-width:640px){.fmt-grid{grid-template-columns:1fr}}
@@ -1185,10 +1191,10 @@ a{color:inherit;text-decoration:none}
     <!-- TAB 2: text testimonials (different clients, plain — no fabricated rating/avatar) -->
     <div class="rv-panel rv-panel-words">
       <div class="rv-track" id="wordsRail">
-        <div class="txt-card"><div class="txt-quote">&ldquo;</div><div class="txt-title">Accurate as-built, on time</div><p class="txt-body">[Placeholder] The Revit model matched our scan to the tolerance we agreed and arrived ahead of the deadline. Their two-layer QC caught issues our previous vendor missed, and the as-built dropped straight into our coordination model without rework. We'll be sending the next site over shortly.</p><div class="txt-meta"><span class="txt-ini">AE</span><div><div class="txt-who">AEC client</div><span class="txt-role">United Kingdom</span></div></div></div>
-        <div class="txt-card"><div class="txt-quote">&ldquo;</div><div class="txt-title">Clear across time zones</div><p class="txt-body">[Placeholder] Communication was responsive throughout and the federated model coordinated cleanly across all four disciplines. Outsourcing scan to BIM to ViBIM was the right call for our practice, and the revisions were turned around overnight every time we needed them.</p><div class="txt-meta"><span class="txt-ini">SE</span><div><div class="txt-who">Structural engineer</div><span class="txt-role">United States</span></div></div></div>
-        <div class="txt-card"><div class="txt-quote">&ldquo;</div><div class="txt-title">Reliable on retrofit work</div><p class="txt-body">[Placeholder] We use ViBIM for renovation and retrofit as-builts. The model quality is consistent project to project, and the free trial made the first engagement low-risk. Their QC report matched our control points exactly, which is why we keep coming back.</p><div class="txt-meta"><span class="txt-ini">SV</span><div><div class="txt-who">Survey firm</div><span class="txt-role">Australia</span></div></div></div>
-        <div class="txt-card"><div class="txt-quote">&ldquo;</div><div class="txt-title">MEP coordination sorted</div><p class="txt-body">[Placeholder] LOD 350 MEP modelling was exactly what our coordination phase needed. Deliverables came in .RVT and .IFC ready to drop into our workflow, and the clash detection saved us days on site. We've kept working with them since the first project.</p><div class="txt-meta"><span class="txt-ini">CO</span><div><div class="txt-who">Contractor</div><span class="txt-role">Canada</span></div></div></div>
+        <div class="txt-card"><div class="txt-quote">&ldquo;</div><p class="txt-body">[Placeholder] The Revit model matched our scan to the tolerance we agreed and arrived ahead of the deadline. Their two-layer QC caught issues our previous vendor missed, and the as-built dropped straight into our coordination model without rework. We'll be sending the next site over shortly.</p><div class="txt-meta"><span class="txt-ini">AE</span><div class="txt-who">AEC client</div></div></div>
+        <div class="txt-card"><div class="txt-quote">&ldquo;</div><p class="txt-body">[Placeholder] Communication was responsive throughout and the federated model coordinated cleanly across all four disciplines. Outsourcing scan to BIM to ViBIM was the right call for our practice, and the revisions were turned around overnight every time we needed them.</p><div class="txt-meta"><span class="txt-ini">SE</span><div class="txt-who">Structural engineer</div></div></div>
+        <div class="txt-card"><div class="txt-quote">&ldquo;</div><p class="txt-body">[Placeholder] We use ViBIM for renovation and retrofit as-builts. The model quality is consistent project to project, and the free trial made the first engagement low-risk. Their QC report matched our control points exactly, which is why we keep coming back.</p><div class="txt-meta"><span class="txt-ini">SV</span><div class="txt-who">Survey firm</div></div></div>
+        <div class="txt-card"><div class="txt-quote">&ldquo;</div><p class="txt-body">[Placeholder] LOD 350 MEP modelling was exactly what our coordination phase needed. Deliverables came in .RVT and .IFC ready to drop into our workflow, and the clash detection saved us days on site. We've kept working with them since the first project.</p><div class="txt-meta"><span class="txt-ini">CO</span><div class="txt-who">Contractor</div></div></div>
       </div>
       <div class="slider-dots" id="wordsDots" role="tablist" aria-label="Testimonials pagination"></div>
     </div>
@@ -1367,7 +1373,7 @@ a{color:inherit;text-decoration:none}
       <p class="deliv-intro rm-text">Point cloud to BIM deliverables from ViBIM are four artifacts: as-built drawings, as-built BIM models, custom Revit families and BIM for facility management. The disciplines above are the trades ViBIM models; the deliverables here are what your team receives. Every deliverable passes the same QC and standards and ships at your project's LOD in standard .RVT, .IFC and .DWG outputs. Each is a fully parametric as-built output ready for design, coordination or handover. The four scan to BIM deliverables are set out below:</p>
     </div>
 
-    <div class="deliv-grid">
+    <div class="deliv-grid" id="delivRail">
 
       <!-- 01 As-Built Drawings -->
       <article class="deliv-card">
@@ -1379,11 +1385,14 @@ a{color:inherit;text-decoration:none}
         <div class="deliv-body">
           <h3 class="deliv-name">As-Built Drawings</h3>
           <p class="deliv-def">As-built drawings from ViBIM are 2D CAD plans, sections and elevations generated from your point cloud to document a structure exactly as it stands. Dimensioned as-built drawings are produced in DWG from the same scan.</p>
-          <div class="deliv-meta">
-            <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Floor plans, sections and elevations</span></div>
-            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.DWG CAD sheets</span></div>
-            <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Permit submission, renovation, retrofit and record drawings</span></div>
-          </div>
+          <details class="deliv-details">
+            <summary class="deliv-sum">Details<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="deliv-meta">
+              <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Floor plans, sections and elevations</span></div>
+              <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.DWG CAD sheets</span></div>
+              <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Permit submission, renovation, retrofit and record drawings</span></div>
+            </div>
+          </details>
           <a class="deliv-link" href="/as-built-drawing/">As-built drawings
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1399,11 +1408,14 @@ a{color:inherit;text-decoration:none}
         <div class="deliv-body">
           <h3 class="deliv-name">As-Built BIM Modeling</h3>
           <p class="deliv-def">As-built BIM modeling from ViBIM delivers a 3D parametric Revit model that reflects the real, existing conditions of a building captured by laser scan. The as-built model is built element by element in Revit at your required LOD.</p>
-          <div class="deliv-meta">
-            <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Parametric as-built objects with their parameters, not just surfaces, at your project's LOD</span></div>
-            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RVT and .IFC, in IFC2x3 or IFC4</span></div>
-            <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Lifecycle, coordination and downstream design</span></div>
-          </div>
+          <details class="deliv-details">
+            <summary class="deliv-sum">Details<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="deliv-meta">
+              <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Parametric as-built objects with their parameters, not just surfaces, at your project's LOD</span></div>
+              <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RVT and .IFC, in IFC2x3 or IFC4</span></div>
+              <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Lifecycle, coordination and downstream design</span></div>
+            </div>
+          </details>
           <a class="deliv-link" href="/as-built-bim-modeling/">As-built BIM modeling
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1419,11 +1431,14 @@ a{color:inherit;text-decoration:none}
         <div class="deliv-body">
           <h3 class="deliv-name">Revit Family Creation</h3>
           <p class="deliv-def">Revit family creation from ViBIM models custom parametric components, such as doors, windows, fixtures and equipment, that match the exact items captured in your scan. We build reusable point cloud to Revit families with the parameters and detail your project workflow requires.</p>
-          <div class="deliv-meta">
-            <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Custom loadable families, with their parameter sets and types, matched to real product or fabrication geometry</span></div>
-            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RFA that loads into the BIM model</span></div>
-            <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Component libraries, manufacturer families and fabrication-ready content</span></div>
-          </div>
+          <details class="deliv-details">
+            <summary class="deliv-sum">Details<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="deliv-meta">
+              <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Custom loadable families, with their parameter sets and types, matched to real product or fabrication geometry</span></div>
+              <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">.RFA that loads into the BIM model</span></div>
+              <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Component libraries, manufacturer families and fabrication-ready content</span></div>
+            </div>
+          </details>
           <a class="deliv-link" href="/revit-family-creation/">Revit family creation
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
@@ -1439,17 +1454,21 @@ a{color:inherit;text-decoration:none}
         <div class="deliv-body">
           <h3 class="deliv-name">BIM for Facility Management</h3>
           <p class="deliv-def">BIM for facility management from ViBIM delivers an as-built model enriched with asset data and LOI, structured so your facility team can link it into a CAFM or FM system as a single source of truth.</p>
-          <div class="deliv-meta">
-            <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Asset and space data, plus non-graphic LOI (Level of Information), prepared for operations</span></div>
-            <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">A data-rich .RVT or .IFC model ready for an FM or CAFM system</span></div>
-            <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Owner handover, operations and maintenance, asset and space management</span></div>
-          </div>
+          <details class="deliv-details">
+            <summary class="deliv-sum">Details<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <div class="deliv-meta">
+              <div class="deliv-row"><span class="deliv-key">Included</span><span class="deliv-val">Asset and space data, plus non-graphic LOI (Level of Information), prepared for operations</span></div>
+              <div class="deliv-row"><span class="deliv-key">Output</span><span class="deliv-val">A data-rich .RVT or .IFC model ready for an FM or CAFM system</span></div>
+              <div class="deliv-row"><span class="deliv-key">Use case</span><span class="deliv-val">Owner handover, operations and maintenance, asset and space management</span></div>
+            </div>
+          </details>
           <a class="deliv-link" href="/bim-for-facility-management/">BIM for facility management
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
 
     </div>
+    <div class="slider-dots deliv-dots" id="delivDots" role="tablist" aria-label="Deliverables pagination"></div>
   </div>
 </section>
 
@@ -1588,19 +1607,6 @@ a{color:inherit;text-decoration:none}
         </div>
       </details>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============ CTA STRIP (after §7 process) ============ -->
-<section class="cta-strip reveal" aria-label="Start your scan to BIM project">
-  <div class="wrap">
-    <div class="cta-strip-card" style="justify-content:center">
-      <div class="cta-strip-actions">
-        <a class="cta-strip-btn primary" href="#quote">Request a Scope Estimate
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="cta-strip-btn ghost" href="#quote">Get a Free Trial</a>
-      </div>
     </div>
   </div>
 </section>
@@ -1792,7 +1798,7 @@ a{color:inherit;text-decoration:none}
         <span class="ql-cta-pl">independent QC layers</span>
       </div>
       <div class="ql-cta-body">
-        <h4>Need an as-built BIM delivered to your standards at a defined LOD?</h4>
+        <h4>Want scan to BIM verified against your point cloud to a defined LOD?</h4>
       </div>
       <div class="ql-cta-actions">
         <a class="ql-btn primary" href="#quote">Request a Quote</a>
@@ -2044,12 +2050,6 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="slider-progress" role="presentation"><span class="slider-progress-fill" id="indFill"></span></div>
     </div>
-    <div class="cta-band-blue" style="justify-content:center">
-      <div class="ctas">
-        <a class="btn btn-primary" href="#quote">Get a Free Trial <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost-light" href="#quote">Request a Scope Estimate</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2159,8 +2159,8 @@ a{color:inherit;text-decoration:none}
       <!-- team photo (anh-team-cta.png); on WordPress, upload to media library and swap src -->
       <div class="cta-ceo"><img src="https://i.postimg.cc/d1FXYC6f/Thie-t-ke-chu-a-co-te-n-(2).png" alt="ViBIM scan to BIM and Revit modeling team"></div>
       <div class="cta-body">
-        <h3>Want a fixed quote before you commit?</h3>
-        <p>Share your scope and get one in 12 to 24 hours, plus a free trial model first.</p>
+        <h3>Ready to scope your scan to BIM project?</h3>
+        <p>Get a fixed quote in 12 to 24 hours, plus a free trial model first.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="#quote">Get a Free Trial <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-outline-white" href="#quote">Request a Quote</a>
@@ -2417,13 +2417,6 @@ a{color:inherit;text-decoration:none}
           <div class="usa-chipgroup ug-south"><div class="geo-chips"><span>Alabama</span><span>Arkansas</span><span>Delaware</span><span>Florida</span><span>Georgia</span><span>Kentucky</span><span>Louisiana</span><span>Maryland</span><span>Mississippi</span><span>North Carolina</span><span>Oklahoma</span><span>South Carolina</span><span>Tennessee</span><a href="https://vibimglobal.com/scan-to-bim-services-in-texas/">Texas</a><span>Virginia</span><span>West Virginia</span><a href="https://vibimglobal.com/scan-to-bim-service-washington-dc/">Washington DC</a></div></div>
           <div class="usa-chipgroup ug-northeast"><div class="geo-chips"><span>Connecticut</span><span>Maine</span><span>Massachusetts</span><span>New Hampshire</span><span>New Jersey</span><span>New York</span><span>Pennsylvania</span><span>Rhode Island</span><span>Vermont</span><span>Boston</span></div></div>
         </div>
-      </div>
-    </div>
-
-    <div class="cta-band-blue" style="justify-content:center">
-      <div class="ctas">
-        <a class="btn btn-primary" href="#quote">Get a Free Trial <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost-light" href="#quote">Request a Scope Estimate</a>
       </div>
     </div>
   </div>
@@ -2699,6 +2692,7 @@ function buildReviewDots(railId,dotsId){
   rail.addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
 }
 buildReviewDots('emailRail','emailDots'); buildReviewDots('wordsRail','wordsDots');
+buildReviewDots('delivRail','delivDots');/* §6 deliverables — dots for the mobile 1-row slider */
 autoSlideRail('emailRail',3600); autoSlideRail('wordsRail',4000);
 /* By the Numbers — manual drag/swipe carousel, centered item = active (no auto, no arrows) */
 (function(){
