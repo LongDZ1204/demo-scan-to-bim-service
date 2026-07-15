@@ -313,8 +313,6 @@ a{color:inherit;text-decoration:none}
 .disc-key{font-weight:700;color:var(--ink);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
 .disc-key::after{content:":"}
 .disc-scope{color:var(--muted)}
-.disc-out{display:flex;flex-wrap:wrap;gap:6px}
-.disc-chip{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--orange);background:var(--orange-soft);border:1px solid rgba(245,131,25,.22);padding:2px 8px;border-radius:5px}
 .disc-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13.5px;color:var(--orange);align-self:flex-start}
 .disc-link svg{width:15px;height:15px;stroke:currentColor;stroke-width:2.2;fill:none;transition:transform .25s var(--ease)}
 .disc-link:hover{color:var(--orange)}
@@ -375,7 +373,6 @@ a{color:inherit;text-decoration:none}
   var(--navy);padding:54px 44px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .cta-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 18%,rgba(245,131,25,.16),transparent 48%);pointer-events:none;border-radius:inherit}
 .cta-card > *{position:relative;z-index:1}
-.cta-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:15px}
 .cta-title{font-size:clamp(26px,3.4vw,38px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.14;max-width:780px;margin-bottom:14px}
 .cta-sub{font-size:16px;color:rgba(255,255,255,.72);max-width:620px;line-height:1.6;margin-bottom:28px}
 .cta-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
@@ -415,8 +412,8 @@ a{color:inherit;text-decoration:none}
 .proc-step-note{color:var(--muted)}
 .proc-qc{margin:0 0 15px}
 .proc-qc-lb{font-size:11px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}
-.proc-qc-chips{display:flex;flex-wrap:wrap;gap:7px}
-.proc-qc-chips span{font-family:var(--mono);font-size:11.5px;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);padding:3px 9px;border-radius:6px}
+.proc-qc-list{list-style:disc;padding-left:20px;margin:0;display:flex;flex-direction:column;gap:3px}
+.proc-qc-list li{font-size:13px;color:var(--muted);line-height:1.5}
 .proc-note{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 14px}
 .proc-out{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink);background:var(--blue-soft);border-left:3px solid var(--blue);padding:11px 15px;border-radius:0 8px 8px 0;line-height:1.5}
 .proc-out svg{flex:0 0 auto;width:16px;height:16px;stroke:var(--blue);stroke-width:2.6;fill:none;margin-top:2px}
@@ -760,7 +757,6 @@ a{color:inherit;text-decoration:none}
 .why-team{margin-top:0}
 .exp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:6px}
 .exp-head-l{display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex:0 0 auto;max-width:34ch}
-.exp-eyebrow{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .exp-head h3{font-size:clamp(18px,1.9vw,22px);font-weight:700;color:var(--head);line-height:1.25}
 .exp-head p{font-size:15px;color:var(--ink);max-width:56ch;flex:1 1 auto;margin-top:2px}
 .exp-allink{display:inline-flex;align-items:center;gap:7px;color:var(--orange);font-weight:700;font-size:14.5px;margin-top:3px;transition:gap .25s var(--ease)}
@@ -1148,7 +1144,7 @@ a{color:inherit;text-decoration:none}
     <input type="radio" name="rvtab" id="tab-words" class="rv-tab-rd">
 
     <div class="rv-head">
-      <h2 class="rv-h2">Scan to BIM Client <span class="hl">Reviews &amp; Testimonials</span></h2>
+      <h2 class="rv-h2">Scan to BIM Services <span class="hl">Reviews</span></h2>
       <p class="rv-intro rm-text">Scan to BIM services by ViBIM earn consistent reviews from architects, engineers, surveyors and contractors, who point to accurate as-built models, fast turnaround, responsive communication and on-time delivery. Those reviews track what technical buyers check before outsourcing, including model quality against the source point cloud, schedule reliability and clear communication across time zones. The numbers behind the feedback say the same, with 80% client retention over five years, 80% of new work arriving through referrals, and a 100% acceptance rate on free-trial projects. The reviews below come from emails clients sent ViBIM about their scan to BIM projects, shown as the original message and as anonymized quotes:</p>
     </div>
 
@@ -1275,7 +1271,7 @@ a{color:inherit;text-decoration:none}
           <p class="disc-def">Architectural scan to BIM converts point cloud data into an accurate as-built model of walls, floors, ceilings, doors, windows and facades. These elements are modeled parametrically in Revit at your required LOD, ready for renovation, retrofit or as-built documentation.</p>
           <div class="disc-meta">
             <div class="disc-row"><span class="disc-key">Scope</span><span class="disc-scope">Walls, floors, roofs, ceilings, doors, windows, stairs, railings, interior detail</span></div>
-            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-out"><span class="disc-chip">.RVT</span><span class="disc-chip">.DWG</span></span></div>
+            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-scope">as-built .RVT, with .DWG sheets where needed</span></div>
           </div>
           <a class="disc-link" href="/architectural-scan-to-bim-services/">Architectural point cloud to BIM
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1294,7 +1290,7 @@ a{color:inherit;text-decoration:none}
           <p class="disc-def">Structural scan to BIM converts point cloud data into an accurate as-built model of columns, beams, slabs, foundations and load-bearing walls. The structural frame is modeled parametrically in Revit at your required LOD, coordinated with architecture and MEP for clash-free documentation.</p>
           <div class="disc-meta">
             <div class="disc-row"><span class="disc-key">Scope</span><span class="disc-scope">Beams, columns, foundations, framing, and rebar when scope requires it</span></div>
-            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-out"><span class="disc-chip">.RVT</span><span class="disc-chip">.IFC</span></span></div>
+            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-scope">parametric as-built .RVT and .IFC</span></div>
           </div>
           <a class="disc-link" href="/structural-bim-modeling/">Structural BIM modeling
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1313,7 +1309,7 @@ a{color:inherit;text-decoration:none}
           <p class="disc-def">MEP scan to BIM converts point cloud data into an accurate as-built model of mechanical, electrical and plumbing systems, including ducts, pipes, conduits and equipment. These MEP systems are modeled parametrically in Revit and clash-checked against structure and architecture.</p>
           <div class="disc-meta">
             <div class="disc-row"><span class="disc-key">Scope</span><span class="disc-scope">HVAC and ducting, piping, electrical and conduit, panels, fire protection, equipment families</span></div>
-            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-out"><span class="disc-chip">.RVT</span><span class="disc-chip">.IFC</span></span></div>
+            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-scope">parametric as-built .RVT and .IFC with equipment families, typically up to LOD 350 where MEP coordination is critical</span></div>
           </div>
           <a class="disc-link" href="/mep-bim-modeling/">MEP BIM modeling
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1332,7 +1328,7 @@ a{color:inherit;text-decoration:none}
           <p class="disc-def">Topography scan to BIM converts point cloud data into an accurate as-built model of terrain, site levels, surrounding structures and existing site features. The surveyed surface is modeled in Revit-ready formats at your required LOD, giving you a reliable base for site planning and design.</p>
           <div class="disc-meta">
             <div class="disc-row"><span class="disc-key">Scope</span><span class="disc-scope">Surface classification, site boundary, automated topo generation, slope and contour</span></div>
-            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-out"><span class="disc-chip">.RVT</span><span class="disc-chip">.DWG</span></span></div>
+            <div class="disc-row"><span class="disc-key">Output</span><span class="disc-scope">as-built surface and terrain model in .RVT and .DWG</span></div>
           </div>
           <a class="disc-link" href="/topography-bim-modeling/">Topography BIM modeling
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1461,7 +1457,6 @@ a{color:inherit;text-decoration:none}
 <section class="cta-band reveal" aria-label="Request a free scan to BIM trial">
   <div class="wrap">
     <div class="cta-card">
-      <p class="cta-eyebrow">250,000+ hours delivered since 2014</p>
       <h2 class="cta-title">Have point cloud or scan data that needs to become a Revit model?</h2>
       <p class="cta-sub">Send us your scan and we model a free trial first, no commitment.</p>
       <div class="cta-actions">
@@ -1476,7 +1471,7 @@ a{color:inherit;text-decoration:none}
 <section class="proc reveal" aria-label="How scan to BIM conversion works">
   <div class="wrap">
     <div class="proc-head">
-      <h2 class="proc-h2">How Scan to BIM Conversion <span class="hl">Works</span></h2>
+      <h2 class="proc-h2">How Scan to BIM Conversion Service <span class="hl">Works</span></h2>
       <p class="proc-intro rm-text">Scan to BIM conversion at ViBIM runs a six-phase, 13-step process that turns your registered point cloud data into a coordinated, parametric as-built BIM model. Point cloud goes in; a parametric as-built model comes out, with two independent QC layers acting as the gate before anything ships. Scan to BIM modeling runs the same way regardless of which scanner produced the data, and no on-site visit is needed. The six phases of the scan to BIM conversion process are set out below:</p>
     </div>
 
@@ -1546,8 +1541,14 @@ a{color:inherit;text-decoration:none}
             <li class="proc-step"><span class="proc-step-n">10</span><span><b>QA/QC Review &amp; Tolerance Compliance</b> <span class="proc-step-note">— the two independent QC layers against the source point cloud</span></span></li>
           </ul>
           <div class="proc-qc">
-            <div class="proc-qc-lb">Each QC layer checks five things</div>
-            <div class="proc-qc-chips"><span>Geometry</span><span>Parameters</span><span>Deviation</span><span>Missing elements</span><span>Consistency</span></div>
+            <div class="proc-qc-lb">Each QC layer checks five things:</div>
+            <ul class="proc-qc-list">
+              <li>Geometry</li>
+              <li>Parameters</li>
+              <li>Deviation, how far an element sits from the source point cloud</li>
+              <li>Missing elements</li>
+              <li>Consistency</li>
+            </ul>
           </div>
           <p class="proc-note">Two independent QC layers verified against the source point cloud, cross-checked to US and UK standards, are what set the work apart; achievable accuracy depends on the quality of the scan.</p>
           <p class="proc-out"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Output:</strong> a clash-checked, QC-verified model approved to advance to submission.</span></p>
@@ -1609,7 +1610,7 @@ a{color:inherit;text-decoration:none}
 <section class="fmt reveal" aria-label="Point cloud formats we accept">
   <div class="wrap">
     <div class="fmt-head">
-      <h3 class="fmt-h3">Point Cloud <span class="hl">Formats We Accept</span></h3>
+      <h3 class="fmt-h3">Point Cloud Formats We Accept</h3>
       <p class="fmt-intro rm-text">Point cloud formats we accept include the common types, RCP, RCS and E57, exported from any scanner. Whether your data comes from a laser scan, photogrammetry or a mobile mapper, ViBIM converts it to BIM, so you never need on-site scanning from us. The format you send decides how the data is linked:</p>
     </div>
 
@@ -1643,7 +1644,7 @@ a{color:inherit;text-decoration:none}
 <section class="sw reveal" aria-label="Scan to BIM software we use">
   <div class="wrap">
     <div class="sw-head">
-      <h3 class="sw-h3">Scan to BIM <span class="hl">Software We Use</span></h3>
+      <h3 class="sw-h3">Scan to BIM Software We Use</h3>
       <p class="sw-intro rm-text">The scan to BIM software we use spans the Autodesk ecosystem and proprietary in-house automation, each tool covering a specific stage of the conversion. Select a tool below to see how we use it:</p>
     </div>
 
@@ -1709,9 +1710,9 @@ a{color:inherit;text-decoration:none}
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal Revit Add-in Tools">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/internal-automation-tools-300x174.png.webp" alt="ViBIM internal Revit add-in and automation tools logo"></span>
-          <span class="sw-name">Revit Add-in &amp; Aina-Aimo</span>
+          <span class="sw-name">Revit Add-in Tools</span>
           <span class="sw-role">In-house automation</span>
-          <div class="sw-tip"><h5>Internal Revit Add-in Tools</h5><p>Our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion, with the in-house AI toolset Aina-Aimo (in development) accelerating the first-pass model. They are part of what keeps turnaround faster than the market average.</p></div>
+          <div class="sw-tip"><h5>Internal Revit Add-in Tools</h5><p>Our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion. They are part of what keeps turnaround faster than the market average.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal QA/QC Tool">
@@ -1749,14 +1750,14 @@ a{color:inherit;text-decoration:none}
       <div class="ql-panels">
         <!-- Panel 1 — Accuracy & Tolerance -->
         <div class="ql-panel qp1">
-          <h3 class="ql-h3">Accuracy &amp; <span class="hl">Tolerance</span></h3>
+          <h3 class="ql-h3">Accuracy &amp; Tolerance</h3>
           <p class="ql-p">Scan to BIM accuracy describes how closely the BIM model matches the real, scanned conditions, governed by source scan resolution and the modeling tolerance agreed for your project. Every element is verified against the point cloud through two-layer independent QC rather than quoting a blanket millimetre figure. Each element's position and geometry are checked against the source cloud, deviations from it are reviewed, and nothing is left missing or misaligned. The accuracy you reach depends on the quality of the input scan and the tolerance agreed for the project, so it is set per project rather than fixed across all of them.</p>
           <p class="ql-def"><b>Tolerance</b> = the allowable difference between the model and the source scan points.</p>
         </div>
 
         <!-- Panel 2 — Quality Standards (ISO 19650 + QC) -->
         <div class="ql-panel qp2">
-          <h3 class="ql-h3"><span class="hl">Quality Standards</span> (ISO 19650 + QC)</h3>
+          <h3 class="ql-h3">Quality Standards (ISO 19650 + QC)</h3>
           <p class="ql-p">Quality standards for scan to BIM combine ISO 19650 information-management practice with a two-layer independent <a href="/blog/scan-to-bim-quality-control/">scan to BIM quality control</a> process, where two reviewers separately validate each model against the scan. This is how ViBIM delivers scan to BIM models that arrive consistent, coordinated and audit-ready. Three standards anchor the work:</p>
           <ul class="factors">
             <li class="factor"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><b>ISO 19650:</b> the international standard for managing BIM information.</span></li>
@@ -1768,7 +1769,7 @@ a{color:inherit;text-decoration:none}
 
         <!-- Panel 3 — Levels of Development (LOD 100-500) -->
         <div class="ql-panel qp3">
-          <h3 class="ql-h3"><span class="hl">Levels of Development</span> (LOD 100–500)</h3>
+          <h3 class="ql-h3">Levels of Development (LOD 100–500)</h3>
           <p class="ql-p">Level of Development (LOD) combines Level of Detail (geometry) and Level of Information (data) to define how reliable a BIM model is, from LOD 100 (conceptual) to LOD 500 (field-verified as-built). We deliver LOD 100 to 500, with LOD 300 the most common for scan to BIM and LOD 350 used where MEP coordination is critical.</p>
           <p class="lod-note">The LOD scale runs from conceptual to field-verified — each level shown by its 3D model below:</p>
           <!-- LOD image cards: drop a transparent-bg PNG into each .lod-img (replace the placeholder span) -->
@@ -1811,62 +1812,64 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec-head">
       <h2>Featured Scan to BIM <span class="hl">Projects</span></h2>
-      <div class="rm"><p class="rm-text">Featured scan to BIM projects from ViBIM span every discipline and building type, from architecture and structure to MEP and topography, delivered for survey and AEC firms across five markets. Each one converts registered point cloud data into a coordinated as-built BIM model, ranging from commercial complexes to heritage churches and transport infrastructure.</p></div>
+      <div class="rm"><p class="rm-text">Featured scan to BIM projects from ViBIM span every discipline and building type, from architecture and structure to MEP and topography, delivered for survey and AEC firms across five markets. Each one converts registered point cloud data into a coordinated as-built BIM model, ranging from commercial complexes to heritage churches and transport infrastructure. A selection of recent scan to BIM projects is shown below:</p></div>
     </div>
+
+    <div style="display:flex;justify-content:flex-end;margin:-4px 0 18px"><a class="exp-allink" href="https://vibimglobal.com/projects/">View all projects<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 
     <div class="proj-rail" id="projRail">
       <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-revit-modelling-for-uk-projects.jpg" alt="As-built Revit model of a commercial office tower modeled from a point cloud">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-revit-modelling-for-uk-projects.jpg" alt="As-built Revit BIM model of commercial complexes in the UK, modeled from a point cloud">
         <div class="proj-body">
           <span class="proj-tag">Commercial · LOD 300</span>
-          <h3>Revit Modeling for a Commercial Office Tower at Texas</h3>
-          <p class="meta">Architecture + structure, registered terrestrial scan</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <h3>Revit Modeling for Commercial Complexes at UK</h3>
+          <p class="meta">Architecture and structure, registered point cloud</p>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-commercial-complexes-in-the-uk/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-hospital-revit-modeling-canada.jpg" alt="As-built BIM model of a healthcare facility from scan data">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/06/project-type-train-station-scaled.jpg" alt="As-built Revit BIM model of a train station in Canada from scan data">
         <div class="proj-body">
-          <span class="proj-tag">Healthcare · LOD 350</span>
-          <h3>Revit Modeling for a Hospital Wing at the United Kingdom</h3>
-          <p class="meta">MEP-heavy clinical layout, clash-checked</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <span class="proj-tag">Transport · LOD 300</span>
+          <h3>Revit Modeling for a Train Station at Canada</h3>
+          <p class="meta">Structure and platform canopy from terrestrial scan</p>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-train-station-at-canada/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/mep-bim-services-for-industrial-facilities-usa-1.jpg" alt="As-built Revit model of an industrial plant modeled from point cloud">
-        <div class="proj-body">
-          <span class="proj-tag">Industrial · LOD 400</span>
-          <h3>Revit Modeling for a Manufacturing Plant at Ontario</h3>
-          <p class="meta">Dense systems, high LOD, fabrication-level detail</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/point-cloud-to-revit-for-heritage-sites.jpg" alt="As-built BIM model of a heritage building from laser scan data">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/point-cloud-to-revit-for-heritage-sites.jpg" alt="As-built Revit BIM model of historical churches in the UK from laser scan data">
         <div class="proj-body">
           <span class="proj-tag">Heritage · LOD 300</span>
-          <h3>Revit Modeling for a Historic Church at the United Kingdom</h3>
+          <h3>Revit Modeling for Historical Churches at UK</h3>
           <p class="meta">Decorative geometry captured from terrestrial scan</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-historical-churches-at-uk/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/scan-to-bim-for-education-buildings-uk-scaled.jpg" alt="As-built Revit model of an education campus building">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/outsource-hospital-revit-modeling-canada.jpg" alt="As-built Revit BIM model of a hospital complex in Canada from scan data">
         <div class="proj-body">
-          <span class="proj-tag">Education · LOD 300</span>
-          <h3>Revit Modeling for a University Campus at Australia</h3>
+          <span class="proj-tag">Healthcare · LOD 350</span>
+          <h3>Revit Modeling for a Hospital Complex at Canada</h3>
+          <p class="meta">MEP-heavy clinical layout, clash-checked</p>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-services-for-hospital-complex-at-canada/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="proj">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/scan-to-bim-for-education-buildings-uk-scaled.jpg" alt="As-built Revit BIM model of a museum building in Australia">
+        <div class="proj-body">
+          <span class="proj-tag">Cultural · LOD 300</span>
+          <h3>Revit Modeling for a Museum at Australia</h3>
           <p class="meta">Multi-volume architecture and structure</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-museum-project-at-australia/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
       <article class="proj">
-        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/mep-revit-services-for-office-fit-outs-uk-1.jpg" alt="As-built BIM model of a retail building for facility management">
+        <img class="proj-img" src="https://vibimglobal.com/wp-content/uploads/2025/07/mep-bim-services-for-industrial-facilities-usa-1.jpg" alt="As-built Revit BIM model of MEP systems at a US industrial factory from point cloud">
         <div class="proj-body">
-          <span class="proj-tag">Commercial · BIM for FM</span>
-          <h3>Revit Modeling for a Retail Center at Washington DC</h3>
-          <p class="meta">As-built base with room and space data</p>
-          <a class="proj-link" href="#">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <span class="proj-tag">Industrial · LOD 400</span>
+          <h3>Revit Modeling for MEP Systems at a US Industrial Factory</h3>
+          <p class="meta">Dense MEP systems, fabrication-level detail</p>
+          <a class="proj-link" href="https://vibimglobal.com/projects/revit-modeling-for-mep-systems-at-industrial-factory-in-the-united-states/">View more <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </article>
     </div>
@@ -1936,11 +1939,8 @@ a{color:inherit;text-decoration:none}
     <div class="why-team">
       <div class="exp-head">
         <div class="exp-head-l">
-          <span class="exp-eyebrow">Our experts</span>
           <h3>The specialists behind every scan to BIM model</h3>
-          <a class="exp-allink" href="https://vibimglobal.com/our-team/">Meet the full team<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <p>ViBIM operates with a core team of 30+ modelers, all holding Architecture or Civil-Engineering degrees with internal BIM certification, working across architecture, structure, MEP and topography BIM modeling for survey and AEC firms.</p>
       </div>
       <!-- 5 specialists — SAME as /our-team/ homepage lineup (founder + Architecture/Structure/MEP leads + PM). Back-office (IT, Accounting) excluded per dev-build-standard §4. Identity-first bios verbatim from homepage. Only Pham Thanh carries a per-card link. -->
       <div class="exp-rail" id="expRail">
@@ -2162,7 +2162,6 @@ a{color:inherit;text-decoration:none}
       <!-- team photo (anh-team-cta.png); on WordPress, upload to media library and swap src -->
       <div class="cta-ceo"><img src="https://i.postimg.cc/d1FXYC6f/Thie-t-ke-chu-a-co-te-n-(2).png" alt="ViBIM scan to BIM and Revit modeling team"></div>
       <div class="cta-body">
-        <div class="eyebrow">Free trial · Quote in 12–24h · NDA-protected</div>
         <h3>Want a fixed quote before you commit?</h3>
         <p>Share your scope and get a quote in 12 to 24 hours, plus a free trial model first.</p>
         <div class="ctas">
