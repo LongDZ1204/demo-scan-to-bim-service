@@ -441,6 +441,9 @@ a{color:inherit;text-decoration:none}
 
 /* ===== Section 8 — Point Cloud Formats We Accept (H3 sub-section, smaller heading; format mono-badge cards) ===== */
 .fmt{padding:58px 0;background:var(--bg);border-top:1px solid var(--line)}
+.swf-head{text-align:center;max-width:820px;margin:0 auto 40px}
+.swf-head h2{font-size:clamp(26px,3.2vw,40px);line-height:1.12;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:14px}
+.swf-head p{font-size:16px;color:var(--ink);line-height:1.6}
 .fmt-head{text-align:center;max-width:760px;margin:0 auto}
 .fmt-h3{font-size:clamp(20px,2.4vw,27px);font-weight:800;color:var(--navy);letter-spacing:-.01em;margin-bottom:12px;line-height:1.22}/* H3 = smaller than the H2 section titles */
 .fmt-h3 .hl{color:var(--orange)}
@@ -607,7 +610,7 @@ a{color:inherit;text-decoration:none}
 .sw-tip{position:absolute;bottom:calc(100% + 15px);left:50%;width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 42px -14px rgba(10,37,64,.42);padding:14px 16px;opacity:0;visibility:hidden;pointer-events:none;transform:translate(calc(-50% + var(--shift,0px)),8px);transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:6}
 .sw-card:hover .sw-tip,.sw-card:focus .sw-tip,.sw-card:focus-within .sw-tip{opacity:1;visibility:visible;transform:translate(calc(-50% + var(--shift,0px)),0)}
 .sw-tip::after{content:"";position:absolute;top:100%;left:calc(50% - var(--shift,0px));transform:translateX(-50%);border:8px solid transparent;border-top-color:#fff}
-.sw-tip h5{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.sw-tip .sw-tip-t{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
 .sw-tip p{font-size:12px;color:var(--ink);line-height:1.5;margin:0}
 /* dots pagination — synced to §16 Worldwide carousel style (orange active pill) */
 .slider-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:26px}
@@ -673,7 +676,7 @@ a{color:inherit;text-decoration:none}
 .ql-cta-pn b{color:var(--orange)}
 .ql-cta-pl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);line-height:1.35;max-width:13ch}
 .ql-cta-body{flex:1;min-width:230px}
-.ql-cta-body h4{font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.3;letter-spacing:-.01em}
+.ql-cta-body .ql-cta-h{font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.3;letter-spacing:-.01em}
 .ql-cta-body p{font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:3px}
 .ql-cta-actions{display:flex;gap:10px;flex-wrap:wrap;flex:0 0 auto}
 .ql-cta .ql-btn{font-size:14px;padding:11px 20px}
@@ -860,7 +863,7 @@ a{color:inherit;text-decoration:none}
 .cta-ceo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 88%,transparent 100%)}
 .cta-body{position:relative;z-index:2;flex:1;padding:46px 50px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left}
 .cta-main .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:14px}
-.cta-main h3{font-family:var(--sans);font-size:clamp(24px,2.6vw,33px);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em;line-height:1.12;max-width:18ch}
+.cta-main .cta-main-h{font-family:var(--sans);font-size:clamp(24px,2.6vw,33px);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em;line-height:1.12;max-width:18ch}
 .cta-main p{font-family:var(--sans);font-size:16px;color:rgba(255,255,255,.82);max-width:46ch;margin:0 0 22px;line-height:1.55}
 .cta-main .ctas{display:flex;gap:13px;flex-wrap:wrap}
 .btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,.6);padding:14px 26px}
@@ -1477,7 +1480,7 @@ a{color:inherit;text-decoration:none}
 <section class="cta-band reveal" aria-label="Request a free scan to BIM trial">
   <div class="wrap">
     <div class="cta-card">
-      <h2 class="cta-title">Have point cloud or scan data that needs to become a Revit model?</h2>
+      <div class="cta-title">Have point cloud or scan data that needs to become a Revit model?</div>
       <p class="cta-sub">Send us your scan for a free trial model, no commitment.</p>
       <div class="cta-actions">
         <a class="cta-btn cta-btn-primary" href="#quote">Request a Free Trial
@@ -1613,8 +1616,12 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ============ SECTION 8 — POINT CLOUD FORMATS WE ACCEPT (H3 sub-section) ============ -->
-<section class="fmt reveal" aria-label="Point cloud formats we accept">
+<section class="fmt reveal" aria-label="Scan to BIM software and formats">
   <div class="wrap">
+    <div class="swf-head">
+      <h2>Scan to BIM Software and Formats</h2>
+      <p>The scan to BIM software and formats at ViBIM cover the Autodesk toolset plus in-house automation, and the common point cloud formats from any scanner. What you send and what we model in are set out below.</p>
+    </div>
     <div class="fmt-head">
       <h3 class="fmt-h3">Point Cloud Formats We Accept</h3>
       <p class="fmt-intro rm-text">Point cloud formats we accept include the common types, RCP, RCS and E57, exported from any scanner. Whether your data comes from a laser scan, photogrammetry or a mobile mapper, ViBIM converts it to BIM, so you never need on-site scanning from us. The format you send decides how the data is linked:</p>
@@ -1662,70 +1669,70 @@ a{color:inherit;text-decoration:none}
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-revit-1-300x174.png" alt="Autodesk Revit logo"></span>
           <span class="sw-name">Autodesk Revit</span>
           <span class="sw-role">BIM authoring</span>
-          <div class="sw-tip"><h5>Autodesk Revit</h5><p>The BIM authoring platform we model the as-built in, building parametric geometry element by element into native .RVT.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Autodesk Revit</div><p>The BIM authoring platform we model the as-built in, building parametric geometry element by element into native .RVT.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk ReCap Pro">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-recap-pro-1-300x174.png" alt="Autodesk ReCap Pro logo"></span>
           <span class="sw-name">Autodesk ReCap Pro</span>
           <span class="sw-role">Point cloud processor</span>
-          <div class="sw-tip"><h5>Autodesk ReCap Pro</h5><p>The point cloud processor that registers, cleans and indexes raw scans into RCP/RCS for Revit to link.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Autodesk ReCap Pro</div><p>The point cloud processor that registers, cleans and indexes raw scans into RCP/RCS for Revit to link.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk Navisworks Manage">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-navisworks-manage-1-300x174.png" alt="Autodesk Navisworks Manage logo"></span>
           <span class="sw-name">Navisworks Manage</span>
           <span class="sw-role">Coordination &amp; clash</span>
-          <div class="sw-tip"><h5>Autodesk Navisworks Manage</h5><p>The coordination tool we run clash detection and model-vs-scan deviation checks in.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Autodesk Navisworks Manage</div><p>The coordination tool we run clash detection and model-vs-scan deviation checks in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="AutoCAD">
           <span class="sw-ic"><img src="https://i.postimg.cc/13nMwDDk/Auto-CAD.png" alt="AutoCAD logo"></span>
           <span class="sw-name">AutoCAD</span>
           <span class="sw-role">As-built drafting</span>
-          <div class="sw-tip"><h5>AutoCAD</h5><p>The drafting tool we produce the as-built DWG sheets in.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">AutoCAD</div><p>The drafting tool we produce the as-built DWG sheets in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk Construction Cloud (ACC)">
           <span class="sw-ic"><img src="https://i.postimg.cc/zGbpKTnY/Construction-Cloud.png" alt="Autodesk Construction Cloud (ACC) logo"></span>
           <span class="sw-name">Construction Cloud</span>
           <span class="sw-role">Cloud collaboration</span>
-          <div class="sw-tip"><h5>Autodesk Construction Cloud (ACC)</h5><p>The cloud platform we collaborate and share models on, formerly BIM 360.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Autodesk Construction Cloud (ACC)</div><p>The cloud platform we collaborate and share models on, formerly BIM 360.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Cintoo Cloud">
           <span class="sw-ic"><img src="https://i.postimg.cc/BnLNH2x9/Cintoo-Cloud.png" alt="Cintoo Cloud logo"></span>
           <span class="sw-name">Cintoo Cloud</span>
           <span class="sw-role">Large-cloud streaming</span>
-          <div class="sw-tip"><h5>Cintoo Cloud</h5><p>The streaming service that handles very large point clouds without copying them to every machine.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Cintoo Cloud</div><p>The streaming service that handles very large point clouds without copying them to every machine.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="BIMcollab">
           <span class="sw-ic"><img src="https://i.postimg.cc/mgzVC77K/BIMcollab.png" alt="BIMcollab logo"></span>
           <span class="sw-name">BIMcollab</span>
           <span class="sw-role">Issue tracking</span>
-          <div class="sw-tip"><h5>BIMcollab</h5><p>The issue tracker we manage clashes and review comments with clients in.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">BIMcollab</div><p>The issue tracker we manage clashes and review comments with clients in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Leica TrueView">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/trueview-300x174.png" alt="Leica TrueView logo"></span>
           <span class="sw-name">Leica TrueView</span>
           <span class="sw-role">Point cloud viewer</span>
-          <div class="sw-tip"><h5>Leica TrueView</h5><p>The viewer clients open to reference the point cloud online.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Leica TrueView</div><p>The viewer clients open to reference the point cloud online.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal Revit Add-in Tools">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/internal-automation-tools-300x174.png.webp" alt="ViBIM internal Revit add-in and automation tools logo"></span>
           <span class="sw-name">Revit Add-in Tools</span>
           <span class="sw-role">In-house automation</span>
-          <div class="sw-tip"><h5>Internal Revit Add-in Tools</h5><p>Our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion. They are part of what keeps turnaround faster than the market average.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Internal Revit Add-in Tools</div><p>Our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion. They are part of what keeps turnaround faster than the market average.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal QA/QC Tool">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/internal-qa-qc-tool-300x174.png.webp" alt="ViBIM internal QA/QC tool logo"></span>
           <span class="sw-name">Internal QA/QC Tool</span>
           <span class="sw-role">Pre-QC flagging</span>
-          <div class="sw-tip"><h5>Internal QA/QC Tool</h5><p>Our proprietary pre-analysis tool that automatically flags missing, misaligned and out-of-tolerance elements before the two-layer QC review.</p></div>
+          <div class="sw-tip"><div class="sw-tip-t">Internal QA/QC Tool</div><p>Our proprietary pre-analysis tool that automatically flags missing, misaligned and out-of-tolerance elements before the two-layer QC review.</p></div>
         </div>
 
       </div>
@@ -1799,7 +1806,7 @@ a{color:inherit;text-decoration:none}
         <span class="ql-cta-pl">independent QC layers</span>
       </div>
       <div class="ql-cta-body">
-        <h4>Want scan to BIM verified against your point cloud to a defined LOD?</h4>
+        <div class="ql-cta-h">Want scan to BIM verified against your point cloud to a defined LOD?</div>
       </div>
       <div class="ql-cta-actions">
         <a class="ql-btn primary" href="#quote">Request a Quote</a>
@@ -1942,11 +1949,6 @@ a{color:inherit;text-decoration:none}
 <section class="sec reveal">
   <div class="wrap">
     <div class="why-team">
-      <div class="exp-head">
-        <div class="exp-head-l">
-          <div class="exp-title">The specialists behind every scan to BIM model</div>
-        </div>
-      </div>
       <!-- 5 specialists — SAME as /our-team/ homepage lineup (founder + Architecture/Structure/MEP leads + PM). Back-office (IT, Accounting) excluded per dev-build-standard §4. Identity-first bios verbatim from homepage. Only Pham Thanh carries a per-card link. -->
       <div class="exp-rail" id="expRail">
         <article class="exp" tabindex="0">
@@ -2163,7 +2165,7 @@ a{color:inherit;text-decoration:none}
       <!-- team photo (anh-team-cta.png); on WordPress, upload to media library and swap src -->
       <div class="cta-ceo"><img src="https://i.postimg.cc/d1FXYC6f/Thie-t-ke-chu-a-co-te-n-(2).png" alt="ViBIM scan to BIM and Revit modeling team"></div>
       <div class="cta-body">
-        <h3>Ready to scope your scan to BIM project?</h3>
+        <div class="cta-main-h">Ready to scope your scan to BIM project?</div>
         <p>Get a fixed quote in 12 to 24 hours, plus a free trial model first.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="#quote">Get a Free Trial <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
