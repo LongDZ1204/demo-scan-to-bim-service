@@ -366,7 +366,7 @@ a{color:inherit;text-decoration:none}
 .deliv-link svg{width:15px;height:15px;stroke:currentColor;stroke-width:2.2;fill:none;transition:transform .25s var(--ease)}
 .deliv-link:hover{color:var(--orange)}
 .deliv-link:hover svg{transform:translateX(4px)}
-.slider-dots.deliv-dots{display:none}/* dots only on the mobile 1-row slider (matches §3 reviews / §16 markets); 2-class selector beats base .slider-dots{display:flex} */
+.slider-controls.deliv-controls{display:none}/* nav+progress only on the mobile 1-row slider (desktop = grid, no slider); 2-class selector beats base .slider-controls{display:flex} */
 
 /* ===== CTA Banner (after Deliverables) — real ViBIM photo + dark shadow overlay; orange stays the brand accent ===== */
 /* PROD: self-host the bg image (currently hotlinked from vibimglobal.com) */
@@ -478,7 +478,7 @@ a{color:inherit;text-decoration:none}
   .deliv-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-2px;padding:2px 2px 8px}
   .deliv-grid::-webkit-scrollbar{display:none}
   .deliv-card{flex:0 0 84%;scroll-snap-align:start}
-  .slider-dots.deliv-dots{display:flex}
+  .slider-controls.deliv-controls{display:flex}
 }
 /* §8 formats: 3 cols → 1 col below 640 */
 @media(max-width:640px){.fmt-grid{grid-template-columns:1fr}}
@@ -1473,7 +1473,13 @@ a{color:inherit;text-decoration:none}
       </article>
 
     </div>
-    <div class="slider-dots deliv-dots" id="delivDots" role="tablist" aria-label="Deliverables pagination"></div>
+    <div class="slider-controls deliv-controls">
+      <div class="slider-nav">
+        <button class="slider-arrow" data-rail="delivRail" data-dir="-1" aria-label="Previous deliverables"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="slider-arrow" data-rail="delivRail" data-dir="1" aria-label="Next deliverables"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="slider-progress" role="presentation"><span class="slider-progress-fill" id="delivFill"></span></div>
+    </div>
   </div>
 </section>
 
@@ -2699,7 +2705,7 @@ function buildReviewDots(railId,dotsId){
   rail.addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
 }
 buildReviewDots('emailRail','emailDots'); buildReviewDots('wordsRail','wordsDots');
-buildReviewDots('delivRail','delivDots');/* §6 deliverables — dots for the mobile 1-row slider */
+bindSlider('delivRail','delivFill');/* §6 deliverables — nav arrows + progress bar for the mobile 1-row slider (matches §8 projects) */
 autoSlideRail('emailRail',3600); autoSlideRail('wordsRail',4000);
 /* By the Numbers — manual drag/swipe carousel, centered item = active (no auto, no arrows) */
 (function(){
