@@ -7,7 +7,9 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/css/intlTelInput.css" rel="stylesheet">
 <style>
 /* ============ ViBIM tokens — ORANGE primary (brand), navy structure ============ */
 :root{
@@ -24,7 +26,7 @@
   --bg:#ffffff;
   --bg-soft:#F7F8FA;
   --line:#E5E9F0;
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --mono:'Inter',system-ui,-apple-system,sans-serif;
   --sans:'Inter',system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.32,.72,0,1);
   --shadow:0 18px 50px -20px rgba(10,37,64,.22);
@@ -35,18 +37,6 @@ html{scroll-behavior:smooth;overflow-x:clip}
 body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
 .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
 a{color:inherit;text-decoration:none}
-
-/* ============ Header ============ */
-.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
-.hd-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:20px;letter-spacing:-.01em}
-.logo .mark{width:30px;height:30px;border-radius:7px;background:var(--orange);display:grid;place-items:center;color:#fff;font-size:14px}
-.nav{display:flex;gap:30px;align-items:center}
-.nav a{font-size:14.5px;font-weight:500;color:var(--ink)}
-.nav a:hover{color:var(--orange)}
-.hd-cta{font-weight:600;font-size:14px;color:#fff;background:var(--orange);padding:10px 18px;border-radius:8px;transition:all .25s var(--ease)}
-.hd-cta:hover{background:var(--orange-dk);transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(245,131,25,.6)}
-.burger{display:none}
 
 /* ============ HERO ============ */
 .hero{position:relative;overflow:hidden;background:
@@ -154,10 +144,6 @@ a{color:inherit;text-decoration:none}
 .seal{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--muted)}
 .seal svg{width:14px;height:14px;stroke:var(--orange);stroke-width:2;fill:none}
 
-/* floating CTA + mobile bar + reveal */
-.float-cta{position:fixed;right:24px;bottom:24px;z-index:50;background:var(--orange);color:#fff;font-weight:600;font-size:15px;padding:13px 22px;border-radius:30px;box-shadow:0 14px 34px -10px rgba(245,131,25,.7);display:flex;align-items:center;gap:9px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .4s var(--ease);pointer-events:none}
-.float-cta.show{opacity:1;transform:translateY(0);pointer-events:auto}
-.float-cta svg{width:16px;height:16px;stroke:#fff;stroke-width:2.4;fill:none}
 /* ===== Section 2 — As Seen On (logo marquee, compact) ===== */
 .seen{padding:18px 0;background:var(--bg);border-top:1px solid var(--line)}
 .seen-label{display:block;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
@@ -472,8 +458,6 @@ a{color:inherit;text-decoration:none}
 
 .reveal{opacity:0;transform:translateY(22px);filter:blur(4px);transition:all .8s var(--ease)}
 .reveal.in{opacity:1;transform:none;filter:none}
-.mobile-bar{display:none}
-
 /* ============ RESPONSIVE ============ */
 /* §5 + §6 grids: 4 cols ≥1080 → 2 cols 600–1080 → 1 col <600 (keeps cards from going huge on tablet) */
 @media(max-width:1080px){.disc-grid,.deliv-grid{grid-template-columns:repeat(2,1fr)}}
@@ -490,9 +474,6 @@ a{color:inherit;text-decoration:none}
 @media(max-width:920px){
   .wrap{padding:0 20px}
   body{padding-bottom:62px}/* clearance cho mobile bottom bar fixed, cuộn thấy hết section cuối */
-  .nav,.hd-cta{display:none}
-  .burger{display:grid;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
-  .burger span{width:24px;height:2px;background:var(--navy);border-radius:2px}
   /* flatten 2 columns into 1, control order explicitly */
   .hero-grid{flex-direction:column;gap:0;padding-block:24px 40px;align-items:stretch}
   .col-left,.col-right{display:contents}
@@ -587,11 +568,6 @@ a{color:inherit;text-decoration:none}
   .logo-item.l-today .lg-img{height:24px;max-width:120px}
   .lg-tip{width:250px}
   .marquee-track{animation-duration:22s}
-  .float-cta{right:16px;bottom:76px}
-  .mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;background:#fff;border-top:1px solid var(--line);height:60px}
-  .mobile-bar a{flex:1;display:grid;place-items:center;gap:3px;font-size:11px;font-weight:600;color:var(--muted)}
-  .mobile-bar a.act{color:var(--orange)}
-  .mobile-bar svg{width:19px;height:19px;stroke:currentColor;stroke-width:2;fill:none}
 }
 
 /* ============ SECTION 9 — SCAN TO BIM SOFTWARE WE USE (H3 · auto-slide carousel + tooltip-above) ============ */
@@ -965,6 +941,9 @@ a{color:inherit;text-decoration:none}
 .quote-trust svg{flex:0 0 auto;width:20px;height:20px;stroke:var(--orange);stroke-width:2.2;fill:none}
 .quote-form{background:#fff;border-radius:14px;padding:30px;box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06)}
 .quote-form h3{color:var(--head);font-size:19px;font-weight:800;margin-bottom:18px}
+.inline-demo-form .demo-form-grid{gap:10px 14px}
+.inline-demo-form .demo-check{font-size:12px}
+.inline-demo-form .demo-submit-wrap{margin-top:18px}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13px;font-weight:600;color:var(--head);margin-bottom:6px}
 .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font:inherit;font-size:14.5px;color:var(--head);background:#fff;resize:vertical}
@@ -972,15 +951,151 @@ a{color:inherit;text-decoration:none}
 .quote-form .btn-primary{width:100%;justify-content:center;font-size:16px;padding:14px}
 .form-note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:11px;line-height:1.5}
 
-/* ===== §21 footer ===== */
-.site-footer{background:#0F1216;color:rgba(255,255,255,.7);padding:56px 0 28px}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px}
-.foot-brand .logo{color:#fff}
-.foot-brand p{font-size:14px;margin-top:15px;max-width:36ch;color:rgba(255,255,255,.55);line-height:1.6}
-.foot-col h5{color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:15px}
-.foot-col a{display:block;font-size:14px;color:rgba(255,255,255,.66);padding:5px 0;transition:color .2s var(--ease)}
-.foot-col a:hover{color:var(--orange)}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.5)}
+/* ===== ViBIM live shell sync: header, footer, fixed contact CTA and popup ===== */
+.vb-shell{width:min(100% - 40px,1240px);margin-inline:auto}
+.vb-site-header{position:sticky;top:0;z-index:80;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.vb-topbar{height:30px;background:var(--orange);color:#fff}
+.vb-topbar-inner{height:100%;display:flex;align-items:center;justify-content:flex-end;font-size:12px}
+.vb-top-contact{display:inline-flex;align-items:center;gap:5px;color:#fff;white-space:nowrap}
+.vb-top-contact i{flex:0 0 auto;font-size:12px;line-height:1}
+.vb-top-divider{width:1px;height:18px;background:rgba(255,255,255,.28);margin:0 16px}
+.vb-mainbar{height:90px;background:#fff}
+.vb-header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.vb-logo{display:block;flex:0 0 210px}
+.vb-logo img{display:block;width:100%;height:auto}
+.vb-desktop-nav{display:flex;align-items:stretch;align-self:stretch;gap:30px;font-size:16px;font-weight:600;color:#575757}
+.vb-desktop-nav>a,.vb-nav-group>a{display:flex;align-items:center;height:100%;gap:4px;transition:color .2s ease}
+.vb-desktop-nav a:hover,.vb-desktop-nav a:focus-visible,.vb-desktop-nav .is-active{color:var(--orange)}
+.vb-nav-group{position:relative;display:flex;align-items:stretch}
+.vb-nav-chevron{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vb-dropdown{position:absolute;top:calc(100% - 1px);left:-18px;min-width:180px;background:#fff;border-top:3px solid var(--orange);box-shadow:0 12px 30px rgba(0,0,0,.14);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s ease;z-index:10}
+.vb-dropdown-services{min-width:260px}
+.vb-dropdown a{display:block;padding:9px 18px;font-size:14px;font-weight:500;color:#575757;white-space:nowrap}
+.vb-nav-group:hover .vb-dropdown,.vb-nav-group:focus-within .vb-dropdown{opacity:1;visibility:visible;transform:none}
+.vb-menu-toggle,.vb-mobile-spacer,.vb-mobile-menu{display:none}
+
+.vb-footer{background:#0069b6;color:#fff;padding:30px 0}
+.vb-footer-intro{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:34px;padding-bottom:25px;border-bottom:1px solid rgba(255,255,255,.35)}
+.vb-footer-logo img{display:block;width:100%;height:auto}
+.vb-footer-intro p{font-size:14px;line-height:1.6;margin:0;color:#fff}
+.vb-footer-grid{display:grid;grid-template-columns:1.55fr .8fr 1.1fr 1fr;gap:34px;margin-top:26px}
+.vb-footer h3{font-size:20px;line-height:1.6;margin:0 0 13px;color:#fff}
+.vb-footer ul{list-style:none;margin:0;padding:0}
+.vb-footer li{margin:0 0 8px;font-size:14px;line-height:1.6}
+.vb-footer-contact li{display:flex;align-items:flex-start;gap:8px}
+.vb-footer-contact i{flex:0 0 14px;min-width:14px;margin-top:4px;font-size:14px;line-height:1;text-align:center;color:#f1f1f1}
+.vb-footer a{color:#fff;transition:color .2s ease}
+.vb-footer a:hover,.vb-footer a:focus-visible{color:#ffd3ab}
+.vb-footer-socials{display:flex;gap:9px;margin:13px 0 14px}
+.vb-footer-socials img{display:block;width:35px;height:35px;object-fit:contain}
+.vb-dmca-link{display:inline-block;line-height:0;cursor:pointer}
+.vb-dmca{width:150px;height:auto;display:block}
+.vb-footer-bottom{border-top:1px solid rgba(255,255,255,.45);margin-top:22px;padding-top:14px;text-align:center;font-size:13px}
+
+.vibim-contact-rail{position:fixed;right:20px;bottom:200px;z-index:90;display:flex;flex-direction:column;align-items:flex-end}
+.vibim-contact-rail a{box-shadow:0 3px 12px rgba(0,0,0,.16)}
+.vibim-contact-icon{display:block;width:50px;height:50px;margin-bottom:5px;border-radius:50%;overflow:hidden;transition:transform .2s ease}
+.vibim-contact-icon:hover,.vibim-contact-icon:focus-visible{transform:translateX(-3px)}
+.vibim-contact-icon img{display:block;width:50px;height:50px;object-fit:contain}
+.vibim-demo-launch{height:41px;min-width:121px;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--orange);color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:500;line-height:1.05;text-align:left}
+.vibim-demo-launch img{width:28px;height:24px;object-fit:contain}
+.vibim-demo-launch:hover,.vibim-demo-launch:focus-visible{background:var(--orange-dk);color:#fff}
+.vibim-mobile-contact{display:none}
+
+.demo-modal[hidden]{display:none}
+.demo-modal{position:fixed;inset:0;z-index:1042;background:rgba(11,11,11,.82);padding:30px;overflow:auto;overscroll-behavior:contain}
+.demo-modal.is-open{display:grid;place-items:center}
+.demo-dialog{position:relative;width:min(600px,100%);background:#fff;border-radius:10px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.demo-close{position:absolute;right:-14px;top:-14px;width:36px;height:36px;display:grid;place-items:center;padding:0;border-radius:50%;border:2px solid #fff;background:#333;color:#fff;line-height:1;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+.demo-close svg{display:block;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.demo-form{font-family:var(--sans);color:#303030;color-scheme:light}
+.demo-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.demo-control{position:relative}
+.demo-control label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.demo-control input,.demo-control select,.demo-control textarea{width:100%;border:1px solid #c8c8c8;border-radius:3px;background:#fff;color:#4a4a4a;color-scheme:light;font:400 14px/1.3 var(--sans);padding:11px 13px;box-shadow:none}
+.demo-control input,.demo-control select{height:42px}
+.demo-control select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#aaa 50%),linear-gradient(135deg,#aaa 50%,transparent 50%);background-position:calc(100% - 16px) 18px,calc(100% - 11px) 18px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:32px}
+.demo-control select option{background:#fff;color:#4a4a4a;color-scheme:light}
+.demo-control input:focus,.demo-control select:focus,.demo-control textarea:focus{outline:2px solid rgba(245,131,25,.3);border-color:var(--orange)}
+.demo-control-full{grid-column:1/-1}
+.demo-control textarea{min-height:116px;resize:vertical}
+.demo-phone-control .iti{display:block;width:100%;color-scheme:light}
+.demo-phone-control .iti input{height:42px;padding-left:54px!important}
+.demo-phone-control .iti__selected-flag{background:#f7f7f7;border-right:1px solid #e0e0e0}
+.iti__country-list{z-index:1055!important;max-height:310px;background:#fff!important;color:#333!important;color-scheme:light;border:1px solid #bfbfbf!important;box-shadow:0 6px 18px rgba(0,0,0,.22)!important}
+.iti__country{background:#fff!important;color:#333!important;font:400 14px/1.25 var(--sans)!important}
+.iti__country:hover,.iti__country.iti__highlight{background:#f1f1f1!important}
+.iti__divider{border-bottom-color:#ddd!important}
+.iti__dial-code{color:#8a8a8a!important}
+.demo-checks{display:grid;gap:8px;margin-top:12px}
+.demo-check{display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:600;line-height:1.35;color:#2c2c2c;cursor:pointer}
+.demo-check input{position:relative;flex:0 0 16px;width:16px;height:16px;margin:1px 0 0 2px;border:0;background:transparent;appearance:none;cursor:pointer}
+.demo-check input::before{content:"";position:absolute;inset:0;border:1px solid rgba(0,0,0,.28);border-radius:3px;background:#fff;box-sizing:border-box;transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease}
+.demo-check input::after{content:"";position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);transform-origin:center;transition:transform .12s ease}
+.demo-check input:checked::before{border-color:var(--orange);background:var(--orange);box-shadow:0 0 0 1px var(--orange),0 1px 2px rgba(0,0,0,.15)}
+.demo-check input:checked::after{transform:rotate(45deg) scale(1)}
+.demo-check input:focus-visible::before{outline:2px solid var(--blue);outline-offset:2px}
+.demo-submit-wrap{text-align:center;margin-top:16px}
+.demo-submit{border:0;border-radius:4px;background:var(--orange);color:#fff;padding:11px 22px;font:500 15px/1.2 var(--sans);cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.15)}
+.demo-submit:hover,.demo-submit:focus-visible{background:var(--orange-dk)}
+.demo-form-status{min-height:18px;margin-top:9px;text-align:center;font-size:12px;color:var(--muted)}
+body.demo-modal-open{overflow:hidden}
+
+@media(max-width:920px){
+  .vb-shell{width:min(100% - 28px,1240px)}
+  .vb-topbar{height:30px}
+  .vb-topbar-inner{justify-content:center;font-size:13px}
+  .vb-top-divider,.vb-top-phone{display:none}
+  .vb-mainbar{height:90px}
+  .vb-header-inner{position:relative;justify-content:center}
+  .vb-logo{flex-basis:220px;max-width:62vw}
+  .vb-desktop-nav{display:none}
+  .vb-menu-toggle{position:absolute;left:0;display:grid;gap:5px;width:36px;height:36px;padding:8px;border:0;background:transparent;cursor:pointer}
+  .vb-menu-toggle span{display:block;width:24px;height:2px;background:#777;border-radius:2px}
+  .vb-mobile-spacer{display:block;position:absolute;right:0;width:36px}
+  .vb-mobile-menu{display:grid;position:fixed;left:0;top:120px;width:min(330px,86vw);max-height:calc(100vh - 120px);overflow:auto;background:#fff;padding:14px 20px 24px;box-shadow:8px 18px 34px rgba(0,0,0,.18);transform:translateX(-105%);transition:transform .25s ease;z-index:79}
+  .vb-mobile-menu.is-open{transform:none}
+  .vb-mobile-menu a{padding:12px 4px;border-bottom:1px solid var(--line);font-weight:600;color:#555}
+  .vibim-contact-rail{display:none}
+  .vibim-mobile-contact{position:fixed;left:0;right:0;bottom:0;z-index:99;height:60px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:#fff;border-top:1px solid #d8d8d8;box-shadow:0 -4px 18px rgba(0,0,0,.13);padding:5px max(10px,env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
+  .vibim-mobile-contact a{height:50px;display:grid;place-items:center;border-right:2px solid rgba(245,131,25,.75)}
+  .vibim-mobile-contact a:last-child{border-right:0}
+  .vibim-mobile-contact img{display:block;width:45px;height:45px;object-fit:contain}
+  .vibim-mobile-contact .mobile-demo{width:45px;height:45px;justify-self:center;background:var(--orange);border-radius:12px}
+  .vibim-mobile-contact .mobile-demo img{width:25px;height:auto}
+  .vb-footer-intro{grid-template-columns:150px 1fr;gap:24px}
+  .vb-footer-grid{grid-template-columns:1.35fr 1fr 1fr;gap:26px}
+  .vb-footer-contact{grid-column:1/-1}
+  .demo-modal{padding:18px}
+  .demo-dialog{margin:auto}
+}
+@media(max-width:560px){
+  .vb-logo{flex-basis:205px;max-width:64vw}
+  .vb-footer-intro{grid-template-columns:1fr;gap:15px}
+  .vb-footer-logo{width:170px}
+  .vb-footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 18px}
+  .vb-footer-contact{grid-column:auto}
+  .demo-modal{padding:12px}
+  .demo-dialog{padding:16px 14px;border-radius:8px}
+  .demo-close{right:-8px;top:-8px;width:34px;height:34px;border:2px solid #fff}
+  .demo-close svg{width:20px;height:20px}
+  .demo-form-grid{grid-template-columns:1fr;gap:9px}
+  .demo-control-full{grid-column:auto}
+  .demo-control input,.demo-control select{height:44px}
+  .demo-phone-control .iti input{height:44px}
+  .iti__country-list{max-width:calc(100vw - 24px);min-width:330px;white-space:normal}
+  .demo-check{font-size:12px}
+  /* Mobile type scale measured from the live Scan to BIM service page. */
+  .crumb{font-size:13px;font-weight:600;line-height:1.6;letter-spacing:.01em}
+  .crumb-sep{font-size:13px}
+  .h1{font-size:28px;line-height:1.3;letter-spacing:normal}
+  .sec-head h2,.rv-h2,.disc-h2,.deliv-h2,.proc-h2,.ql-h2{font-size:28.8px;line-height:1.3;letter-spacing:normal}
+  .disc-name,.deliv-name,.fmt-h3,.ql-h3{font-size:19.04px;line-height:1.3;letter-spacing:normal}
+  .intro .intro-lead,.intro .intro-brand,.rm-text{font-size:14px;line-height:1.6}
+  .disc-def,.deliv-def,.proc-def,.proc-note,.proc-out,.sw-slide p,.fmt-desc,.ql-def,.lod-note{font-size:14px;line-height:1.6}
+  .vb-footer-intro p,.vb-footer li,.vb-footer a{font-size:14px;line-height:1.6}
+  .vb-footer h3{font-size:20px;line-height:1.6}
+}
 
 
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}.proj-rail,.exp-rail{scroll-behavior:auto}}
@@ -1008,7 +1123,6 @@ a{color:inherit;text-decoration:none}
   .quote-wrap{grid-template-columns:1fr;gap:30px}
   .cta-ceo{flex-basis:320px}
   .cta-body{padding:34px 28px}
-  .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
 }
 @media(max-width:560px){
   .proj{flex-basis:84vw}
@@ -1031,22 +1145,66 @@ a{color:inherit;text-decoration:none}
   .cta-ceo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,#000 88%,transparent 100%)}
   .cta-body{padding:34px 22px 6px}
   .cta-main .ctas .btn{width:100%;justify-content:center}
-  .foot-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ HEADER (scaffold) ============ -->
-<header class="site-header">
-  <div class="wrap hd-inner">
-    <a class="logo" href="#"><span class="mark">V</span>ViBIM</a>
-    <nav class="nav">
-      <a href="#">Services</a><a href="#">Pricing</a><a href="#">How it Works</a><a href="#">Projects</a><a href="#">Our Story</a>
-    </nav>
-    <a class="hd-cta" href="#">Get a Quote</a>
-    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<!-- ============ HEADER — synced with vibimglobal.com ============ -->
+<header class="vb-site-header" id="top">
+  <div class="vb-topbar">
+    <div class="vb-shell vb-topbar-inner">
+      <a href="mailto:info@vibim.com.vn" class="vb-top-contact" aria-label="Email ViBIM">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i> info@vibim.com.vn
+      </a>
+      <span class="vb-top-divider" aria-hidden="true"></span>
+      <a href="tel:+84944798298" class="vb-top-contact vb-top-phone" aria-label="Call ViBIM">
+        <i class="fa-solid fa-phone" aria-hidden="true"></i> (+84)944-798-298
+      </a>
+    </div>
   </div>
+  <div class="vb-mainbar">
+    <div class="vb-shell vb-header-inner">
+      <button class="vb-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vbMobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <a class="vb-logo" href="https://vibimglobal.com/" aria-label="ViBIM homepage">
+        <img src="https://vibimglobal.com/wp-content/uploads/2025/07/logo-vibim-3-1024x322.png" alt="ViBIM — Visualize Your Vision" width="1020" height="321">
+      </a>
+      <nav class="vb-desktop-nav" aria-label="Primary navigation">
+        <a href="https://vibimglobal.com/">Home</a>
+        <div class="vb-nav-group">
+          <a href="https://vibimglobal.com/about-us/">About Us <svg class="vb-nav-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg></a>
+          <div class="vb-dropdown">
+            <a href="https://vibimglobal.com/our-team/">Our Team</a>
+            <a href="https://vibimglobal.com/testimonials/">Testimonials</a>
+          </div>
+        </div>
+        <div class="vb-nav-group">
+          <a class="is-active" href="https://vibimglobal.com/point-cloud-to-bim-services/">Services <svg class="vb-nav-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg></a>
+          <div class="vb-dropdown vb-dropdown-services">
+            <a href="https://vibimglobal.com/point-cloud-to-bim-services/">Scan to BIM Services</a>
+            <a href="https://vibimglobal.com/architectural-scan-to-bim-services/">Architecture Scan to BIM</a>
+            <a href="https://vibimglobal.com/structural-bim-modeling/">Structural Scan to BIM</a>
+            <a href="https://vibimglobal.com/mep-bim-modeling/">MEP Scan to BIM</a>
+            <a href="https://vibimglobal.com/topography-bim-modeling/">Topography Scan to BIM</a>
+          </div>
+        </div>
+        <a href="https://vibimglobal.com/projects/">Projects</a>
+        <a href="https://vibimglobal.com/blog/">Blogs</a>
+        <a href="https://vibimglobal.com/contact-us/">Contact Us</a>
+      </nav>
+      <span class="vb-mobile-spacer" aria-hidden="true"></span>
+    </div>
+  </div>
+  <nav class="vb-mobile-menu" id="vbMobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="https://vibimglobal.com/">Home</a>
+    <a href="https://vibimglobal.com/about-us/">About Us</a>
+    <a href="https://vibimglobal.com/point-cloud-to-bim-services/">Services</a>
+    <a href="https://vibimglobal.com/projects/">Projects</a>
+    <a href="https://vibimglobal.com/blog/">Blogs</a>
+    <a href="https://vibimglobal.com/contact-us/">Contact Us</a>
+  </nav>
 </header>
 
 <!-- ============ SECTION 1 — HERO ============ -->
@@ -1057,7 +1215,7 @@ a{color:inherit;text-decoration:none}
     <div class="col-left">
       <nav class="crumb reveal" aria-label="Breadcrumb">
         <a href="/">Home</a>
-        <span class="crumb-sep" aria-hidden="true">›</span>
+        <i class="crumb-sep fa-solid fa-angle-right" aria-hidden="true"></i>
         <span class="crumb-cur" aria-current="page">Point Cloud Scan to BIM Services</span>
       </nav>
       <span class="credential reveal">
@@ -1079,10 +1237,10 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div class="cta-row reveal">
-        <a class="btn btn-primary" href="#quote">Start a Free Trial
+        <a class="btn btn-primary js-open-demo" href="#demoModal" aria-haspopup="dialog">Start a Free Trial
           <span class="ic"><svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
-        <a class="btn btn-ghost" href="#quote">Get a Quote
+        <a class="btn btn-ghost" href="https://vibimglobal.com/wp-content/uploads/2026/01/ViBIM_Scan-to-BIM_Company-profile_Nov-2025_02.pdf" target="_blank" rel="noopener">Download Our Brochure
           <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -2540,14 +2698,29 @@ a{color:inherit;text-decoration:none}
           <li><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>NDA on request · secure file transfer</li>
         </ul>
       </div>
-      <form class="quote-form" onsubmit="return false">
+      <form class="quote-form demo-form inline-demo-form" id="quoteDemoForm" novalidate>
         <h3>Request your free trial &amp; quote</h3>
-        <div class="field"><label for="q-name">Full name</label><input id="q-name" type="text" placeholder="Your name" required></div>
-        <div class="field"><label for="q-email">Work email</label><input id="q-email" type="email" placeholder="you@company.com" required></div>
-        <div class="field"><label for="q-company">Company</label><input id="q-company" type="text" placeholder="Company name"></div>
-        <div class="field"><label for="q-details">Project details</label><textarea id="q-details" rows="3" placeholder="Building type, size (sq ft), LOD, deliverable formats, point cloud format…"></textarea></div>
-        <button class="btn btn-primary" type="submit">Get a Free Trial <svg class="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <p class="form-note">By submitting you agree to be contacted about your project. We never share your data. NDA available on request.</p>
+        <div class="demo-form-grid">
+          <div class="demo-control"><label for="quoteName">Name</label><input id="quoteName" name="wpforms[fields][0]" type="text" placeholder="Name*" autocomplete="name" required></div>
+          <div class="demo-control"><label for="quoteCompany">Company</label><input id="quoteCompany" name="wpforms[fields][5]" type="text" placeholder="Company" autocomplete="organization"></div>
+          <div class="demo-control"><label for="quoteEmail">Email</label><input id="quoteEmail" name="wpforms[fields][4]" type="email" placeholder="Email*" autocomplete="email" required></div>
+          <div class="demo-control demo-phone-control"><label for="quotePhone">Phone or WhatsApp</label><input id="quotePhone" name="wpforms[fields][6]" type="tel" placeholder="Phone/Whatsapp" autocomplete="tel"></div>
+          <div class="demo-control"><label for="quoteService">Select a service</label><select id="quoteService" name="wpforms[fields][7]"><option value="" disabled selected>Select a service</option><option>Architecture BIM / Revit modeling</option><option>Structural BIM / Revit Modeling</option><option>MEP BIM / Revit Modeling</option><option>Topography BIM / Revit modeling</option><option>BIM Collaboration Using ACC</option><option>All building disciplines</option><option>Others - Please specify in description</option></select></div>
+          <div class="demo-control"><label for="quoteProjectType">Select a project type</label><select id="quoteProjectType" name="wpforms[fields][8]"><option value="" disabled selected>Select a project type</option><option>Residential Buildings</option><option>Healthcare Facilities</option><option>Industrial Buildings</option><option>Commercial &amp; Office Buildings</option><option>Educational Facilities</option><option>Heritage &amp; Cultural Buildings</option><option>Transportation Infrastructure</option><option>Recreation &amp; Public Spaces</option><option>Others</option></select></div>
+          <div class="demo-control"><label for="quoteRegion">Where do you need services?</label><select id="quoteRegion" name="wpforms[fields][9]"><option value="" disabled selected>Where do you need services?</option><option>United States (USA)</option><option>United Kingdom (UK)</option><option>Australia</option><option>Canada</option><option>European Union</option><option>Other</option></select></div>
+          <div class="demo-control"><label for="quoteBudget">Project budget</label><input id="quoteBudget" name="wpforms[fields][16]" type="text" placeholder="What is your project budget?"></div>
+          <div class="demo-control demo-control-full"><label for="quoteInfo">Project information</label><textarea id="quoteInfo" name="wpforms[fields][2]" placeholder="Project information"></textarea></div>
+        </div>
+        <div class="demo-checks">
+          <label class="demo-check"><input name="wpforms[fields][15][]" type="checkbox" value="I would like to have a free demo project"><span>I would like to have a free demo project</span></label>
+          <label class="demo-check"><input name="wpforms[fields][13][]" type="checkbox" value="I agree to ViBIM the terms and privacy policy*" required><span>I agree to ViBIM the terms and privacy policy*</span></label>
+          <label class="demo-check"><input name="wpforms[fields][14][]" type="checkbox" value="I want to receive news, tips from ViBIM via email, Unsubscribe anytime"><span>I want to receive news, tips from ViBIM via email, Unsubscribe anytime</span></label>
+        </div>
+        <input type="hidden" name="wpforms[id]" value="170">
+        <input type="hidden" name="wpforms[author]" value="1">
+        <input type="hidden" name="wpforms[post_id]" value="9">
+        <div class="demo-submit-wrap"><button class="demo-submit" type="submit">Send message</button></div>
+        <p class="demo-form-status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -2592,69 +2765,209 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- ============ §21 FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <div class="logo"><span class="mark">V</span> ViBIM</div>
-        <p>Remote scan to BIM and point cloud to Revit conversion for architects, engineers and contractors — delivered worldwide from your point cloud data.</p>
+<!-- ============ §21 FOOTER — synced with vibimglobal.com ============ -->
+<footer class="vb-footer">
+  <div class="vb-shell">
+    <div class="vb-footer-intro">
+      <a class="vb-footer-logo" href="https://vibimglobal.com/" aria-label="ViBIM homepage">
+        <img src="https://vibimglobal.com/wp-content/uploads/2025/06/logo-vibim-footer.png" alt="ViBIM" width="666" height="309" loading="lazy">
+      </a>
+      <p>ViBIM transforms point cloud data into precise, parametric Building Information Models using Autodesk Revit as our primary authoring platform.</p>
+    </div>
+    <div class="vb-footer-grid">
+      <div class="vb-footer-contact">
+        <h3>Contact Information</h3>
+        <ul>
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><a href="https://maps.app.goo.gl/9vtLFi5YPNHMq9sx7" target="_blank" rel="nofollow noopener">10th floor, CIT Building, No 6, Valley 15, Duy Tan street, Cau Giay ward, Hanoi, Vietnam</a></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+84944798298" rel="nofollow">(+84) 944.798.298</a></li>
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:info@vibim.com.vn" rel="nofollow">info@vibim.com.vn</a></li>
+        </ul>
+        <div class="vb-footer-socials" aria-label="ViBIM social media">
+          <a href="https://www.linkedin.com/company/vibim/" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-1-2.png" alt="LinkedIn" width="35" height="35" loading="lazy"></a>
+          <a href="https://www.facebook.com/BIMconsult" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-2-2.png" alt="Facebook" width="35" height="35" loading="lazy"></a>
+          <a href="https://www.youtube.com/@ScanToBim_ViBIM" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-3-1.png" alt="YouTube" width="35" height="35" loading="lazy"></a>
+          <a href="https://x.com/vibimscantobim" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-4-1.png" alt="X" width="35" height="35" loading="lazy"></a>
+        </div>
+        <a class="vb-dmca-link dmca-badge" href="https://www.dmca.com/Protection/Status.aspx?ID=44b3ce2c-05a2-423f-9842-ac8d96630ac5&amp;refurl=https://vibimglobal.com/" title="DMCA.com Protection Status" rel="nofollow">
+          <img class="vb-dmca" src="https://images.dmca.com/Badges/dmca-badge-w150-5x1-04.png?ID=44b3ce2c-05a2-423f-9842-ac8d96630ac5" alt="DMCA.com Protection Status" width="150" height="30" loading="lazy">
+        </a>
       </div>
-      <div class="foot-col">
-        <h5>Services</h5>
-        <a href="#">Point Cloud to BIM</a>
-        <a href="#">Scan to BIM</a>
-        <a href="#">Revit Modeling</a>
-        <a href="#">MEP Coordination</a>
-        <a href="#">As-built Documentation</a>
+      <div>
+        <h3>ViBIM</h3>
+        <ul>
+          <li><a href="https://vibimglobal.com/about-us/">About ViBIM</a></li>
+          <li><a href="https://vibimglobal.com/our-team/">Our Teams</a></li>
+          <li><a href="https://vibimglobal.com/testimonials/">Testimonials</a></li>
+          <li><a href="https://vibimglobal.com/faq/">FAQ</a></li>
+          <li><a href="https://vibimglobal.com/contact-us/">Contact us</a></li>
+          <li><a href="https://vibimglobal.com/blog/">Blogs</a></li>
+          <li><a href="https://vibimglobal.com/vibim-sitemap/">ViBIM Sitemap</a></li>
+        </ul>
       </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <a href="#">Our Story</a>
-        <a href="#">Projects</a>
-        <a href="#">How it Works</a>
-        <a href="#">Reviews</a>
-        <a href="#quote">Get a Quote</a>
+      <div>
+        <h3>Our Services</h3>
+        <ul>
+          <li><a href="https://vibimglobal.com/point-cloud-to-bim-services/">Scan to BIM Services</a></li>
+          <li><a href="https://vibimglobal.com/architectural-scan-to-bim-services/">Architecture Scan to BIM</a></li>
+          <li><a href="https://vibimglobal.com/structural-bim-modeling/">Structural Scan to BIM</a></li>
+          <li><a href="https://vibimglobal.com/as-built-bim-modeling/">As Built BIM Modeling Services</a></li>
+          <li><a href="https://vibimglobal.com/mep-bim-modeling/">MEP Scan to BIM</a></li>
+          <li><a href="https://vibimglobal.com/topography-bim-modeling/">Topography Scan to BIM</a></li>
+        </ul>
       </div>
-      <div class="foot-col">
-        <h5>Resources</h5>
-        <a href="/blog/what-is-scan-to-bim/">Scan to BIM workflow</a>
-        <a href="/blog/point-cloud-to-bim/">Point cloud to BIM</a>
-        <a href="/blog/scan-to-bim-cost/">Pricing guide</a>
-        <a href="/blog/best-scan-to-bim-software/">Software guide</a>
-        <a href="#">Checklist downloads</a>
+      <div>
+        <h3>Policy</h3>
+        <ul>
+          <li><a href="https://vibimglobal.com/conditions-of-use/">Conditions of Use</a></li>
+          <li><a href="https://vibimglobal.com/security-and-data-protection/">Security and Data Protection</a></li>
+          <li><a href="https://vibimglobal.com/warranty-policy/">Warranty Policy</a></li>
+          <li><a href="https://vibimglobal.com/payment-policy/">Payment Policy</a></li>
+          <li><a href="https://vibimglobal.com/shipping-policy/">Shipping Policy</a></li>
+        </ul>
       </div>
     </div>
-    <div class="foot-bottom">
-      <span>© 2026 ViBIM. All rights reserved.</span>
-      <span>Privacy Policy · Terms · NDA on request</span>
-    </div>
+    <div class="vb-footer-bottom">© 2026 ViBIM | All rights reserved</div>
   </div>
 </footer>
 
-<a class="float-cta" href="#quote">
-  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  Get a Quote
-</a>
+<!-- Desktop fixed contact rail — matches ViBIM live -->
+<aside class="vibim-contact-rail" aria-label="Quick contact">
+  <a class="vibim-contact-icon" href="https://www.linkedin.com/company/vibim/" target="_blank" rel="nofollow noopener" aria-label="ViBIM on LinkedIn">
+    <img src="https://vibimglobal.com/wp-content/uploads/2025/07/logo-linkedin.png" alt="" width="50" height="50">
+  </a>
+  <a class="vibim-contact-icon" href="tel:+84944798298" rel="nofollow" aria-label="Call ViBIM">
+    <img src="https://vibimglobal.com/wp-content/uploads/2025/07/phone-icon-vibim.png" alt="" width="50" height="50">
+  </a>
+  <a class="vibim-contact-icon" href="https://wa.me/84944798298" target="_blank" rel="nofollow noopener" aria-label="Chat with ViBIM on WhatsApp">
+    <img src="https://vibimglobal.com/wp-content/uploads/2025/06/whatsapp-icon.png" alt="" width="50" height="50">
+  </a>
+  <a class="vibim-demo-launch js-open-demo" href="#demoModal" aria-haspopup="dialog">
+    <img src="https://vibimglobal.com/wp-content/uploads/2025/06/icon_get.png" alt="" width="28" height="24">
+    <span>Get a<br>Free Demo</span>
+  </a>
+</aside>
 
-<!-- mobile bottom bar -->
-<nav class="mobile-bar">
-  <a href="#"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Services</a>
-  <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Pricing</a>
-  <a class="act" href="#quote"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Get a Quote</a>
+<!-- Mobile fixed contact bar — matches ViBIM live -->
+<nav class="vibim-mobile-contact" aria-label="Quick contact">
+  <a href="https://www.linkedin.com/company/vibim/" target="_blank" rel="nofollow noopener" aria-label="ViBIM on LinkedIn"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/logo-linkedin.png" alt="" width="45" height="45"></a>
+  <a href="tel:+84944798298" rel="nofollow" aria-label="Call ViBIM"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/phone-icon-vibim.png" alt="" width="45" height="45"></a>
+  <a href="https://wa.me/84944798298" target="_blank" rel="nofollow noopener" aria-label="Chat with ViBIM on WhatsApp"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/whatsapp-icon.png" alt="" width="45" height="45"></a>
+  <a class="mobile-demo js-open-demo" href="#demoModal" aria-haspopup="dialog" aria-label="Get a Free Demo"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/icon_get.png" alt="" width="28" height="24"></a>
 </nav>
 
+<!-- Get a Free Demo popup — field structure synced with live WPForms form 170 -->
+<div class="demo-modal" id="demoModal" hidden>
+  <div class="demo-dialog" role="dialog" aria-modal="true" aria-label="Get a Free Demo form">
+    <button class="demo-close" type="button" aria-label="Close form"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    <form class="demo-form" id="demoForm" novalidate>
+      <div class="demo-form-grid">
+        <div class="demo-control"><label for="demoName">Name</label><input id="demoName" name="wpforms[fields][0]" type="text" placeholder="Name*" autocomplete="name" required></div>
+        <div class="demo-control"><label for="demoCompany">Company</label><input id="demoCompany" name="wpforms[fields][5]" type="text" placeholder="Company" autocomplete="organization"></div>
+        <div class="demo-control"><label for="demoEmail">Email</label><input id="demoEmail" name="wpforms[fields][4]" type="email" placeholder="Email*" autocomplete="email" required></div>
+        <div class="demo-control demo-phone-control"><label for="demoPhone">Phone or WhatsApp</label><input id="demoPhone" name="wpforms[fields][6]" type="tel" placeholder="Phone/Whatsapp" autocomplete="tel"></div>
+        <div class="demo-control"><label for="demoService">Select a service</label><select id="demoService" name="wpforms[fields][7]"><option value="" disabled selected>Select a service</option><option>Architecture BIM / Revit modeling</option><option>Structural BIM / Revit Modeling</option><option>MEP BIM / Revit Modeling</option><option>Topography BIM / Revit modeling</option><option>BIM Collaboration Using ACC</option><option>All building disciplines</option><option>Others - Please specify in description</option></select></div>
+        <div class="demo-control"><label for="demoProjectType">Select a project type</label><select id="demoProjectType" name="wpforms[fields][8]"><option value="" disabled selected>Select a project type</option><option>Residential Buildings</option><option>Healthcare Facilities</option><option>Industrial Buildings</option><option>Commercial &amp; Office Buildings</option><option>Educational Facilities</option><option>Heritage &amp; Cultural Buildings</option><option>Transportation Infrastructure</option><option>Recreation &amp; Public Spaces</option><option>Others</option></select></div>
+        <div class="demo-control"><label for="demoRegion">Where do you need services?</label><select id="demoRegion" name="wpforms[fields][9]"><option value="" disabled selected>Where do you need services?</option><option>United States (USA)</option><option>United Kingdom (UK)</option><option>Australia</option><option>Canada</option><option>European Union</option><option>Other</option></select></div>
+        <div class="demo-control"><label for="demoBudget">Project budget</label><input id="demoBudget" name="wpforms[fields][16]" type="text" placeholder="What is your project budget?"></div>
+        <div class="demo-control demo-control-full"><label for="demoInfo">Project information</label><textarea id="demoInfo" name="wpforms[fields][2]" placeholder="Project information"></textarea></div>
+      </div>
+      <div class="demo-checks">
+        <label class="demo-check"><input name="wpforms[fields][15][]" type="checkbox" value="I would like to have a free demo project"><span>I would like to have a free demo project</span></label>
+        <label class="demo-check"><input name="wpforms[fields][13][]" type="checkbox" value="I agree to ViBIM the terms and privacy policy*" required><span>I agree to ViBIM the terms and privacy policy*</span></label>
+        <label class="demo-check"><input name="wpforms[fields][14][]" type="checkbox" value="I want to receive news, tips from ViBIM via email, Unsubscribe anytime"><span>I want to receive news, tips from ViBIM via email, Unsubscribe anytime</span></label>
+      </div>
+      <input type="hidden" name="wpforms[id]" value="170">
+      <input type="hidden" name="wpforms[author]" value="1">
+      <input type="hidden" name="wpforms[post_id]" value="9">
+      <div class="demo-submit-wrap"><button class="demo-submit" type="submit">Send message</button></div>
+      <p class="demo-form-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/intlTelInput.min.js"></script>
 <script>
 /* scroll reveal — animation only, NO content in JS (SEO-safe) */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const fc=document.querySelector('.float-cta');
-/* hide float CTA while it would overlap bottom-right content (numbers strip + federated strip) */
-let avoidVis=false;
-const avoidEls=[document.querySelector('.bytenum'),document.querySelector('.disc-fed'),document.querySelector('.cta-band'),document.querySelector('.cta-strip'),document.querySelector('.ql-cta')].filter(Boolean);
-const avObs=new IntersectionObserver((es)=>{es.forEach(e=>{e.target.__vis=e.isIntersecting;});avoidVis=avoidEls.some(el=>el.__vis);if(avoidVis)fc.classList.remove('show');},{threshold:.15});
-avoidEls.forEach(el=>avObs.observe(el));
-addEventListener('scroll',()=>{fc.classList.toggle('show',scrollY>620 && !avoidVis)},{passive:true});
+
+/* ViBIM mobile menu */
+const vbMenuToggle=document.querySelector('.vb-menu-toggle');
+const vbMobileMenu=document.getElementById('vbMobileMenu');
+if(vbMenuToggle&&vbMobileMenu){
+  vbMenuToggle.addEventListener('click',()=>{
+    const open=vbMobileMenu.classList.toggle('is-open');
+    vbMenuToggle.setAttribute('aria-expanded',String(open));
+    vbMobileMenu.setAttribute('aria-hidden',String(!open));
+  });
+  vbMobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+    vbMobileMenu.classList.remove('is-open');
+    vbMenuToggle.setAttribute('aria-expanded','false');
+    vbMobileMenu.setAttribute('aria-hidden','true');
+  }));
+}
+
+/* Shared Get a Free Demo popup: fixed rail, mobile bar and hero CTA */
+const demoModal=document.getElementById('demoModal');
+const demoClose=demoModal?.querySelector('.demo-close');
+const demoForm=document.getElementById('demoForm');
+const demoPhoneInput=document.getElementById('demoPhone');
+const quoteDemoForm=document.getElementById('quoteDemoForm');
+const quotePhoneInput=document.getElementById('quotePhone');
+const createPhonePicker=input=>input&&window.intlTelInput
+  ? window.intlTelInput(input,{
+      initialCountry:'vn',
+      preferredCountries:['us','gb'],
+      nationalMode:false,
+      autoPlaceholder:'aggressive',
+      utilsScript:'https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.3/build/js/utils.js'
+    })
+  : null;
+const demoPhonePicker=createPhonePicker(demoPhoneInput);
+const quotePhonePicker=createPhonePicker(quotePhoneInput);
+let demoReturnFocus=null;
+function openDemoModal(trigger){
+  if(!demoModal)return;
+  demoReturnFocus=trigger||document.activeElement;
+  demoModal.hidden=false;
+  requestAnimationFrame(()=>demoModal.classList.add('is-open'));
+  document.body.classList.add('demo-modal-open');
+  demoModal.querySelector('.demo-form input')?.focus();
+}
+function closeDemoModal(){
+  if(!demoModal)return;
+  demoModal.classList.remove('is-open');
+  demoModal.hidden=true;
+  document.body.classList.remove('demo-modal-open');
+  demoReturnFocus?.focus?.();
+}
+document.querySelectorAll('.js-open-demo').forEach(trigger=>trigger.addEventListener('click',event=>{
+  event.preventDefault();
+  openDemoModal(trigger);
+}));
+demoClose?.addEventListener('click',closeDemoModal);
+demoModal?.addEventListener('click',event=>{if(event.target===demoModal)closeDemoModal();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!demoModal?.hidden)closeDemoModal();});
+function bindContactForm(form,phoneInput,phonePicker){
+  form?.addEventListener('submit',event=>{
+    event.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    if(phonePicker&&phoneInput.value.trim()&&!phonePicker.isValidNumber()){
+      phoneInput.setCustomValidity('Please enter a valid phone number.');
+      phoneInput.reportValidity();
+      return;
+    }
+    phoneInput?.setCustomValidity('');
+    const status=form.querySelector('.demo-form-status');
+    if(status)status.textContent='Demo UI ready. Connect the production WPForms endpoint before accepting live submissions.';
+  });
+  phoneInput?.addEventListener('input',()=>phoneInput.setCustomValidity(''));
+}
+bindContactForm(demoForm,demoPhoneInput,demoPhonePicker);
+bindContactForm(quoteDemoForm,quotePhoneInput,quotePhonePicker);
 /* before/after compare slider — drag only moves the clip; both images stay in DOM */
 (function(){
   const s=document.getElementById('baSlider'); if(!s) return;
