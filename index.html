@@ -1003,6 +1003,12 @@ a strong{font-weight:inherit}
 .vibim-demo-launch:hover,.vibim-demo-launch:focus-visible{background:var(--orange-dk);color:#fff}
 .vibim-mobile-contact{display:none}
 
+.vb-totop{position:fixed;right:20px;bottom:70px;z-index:89;width:39px;height:39px;display:grid;place-items:center;background:var(--blue);color:#fff;border:1px solid #fff;border-radius:5px;box-shadow:0 3px 12px rgba(0,0,0,.16);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s var(--ease),transform .25s var(--ease),background .2s ease}
+.vb-totop.is-on{opacity:1;visibility:visible;transform:none}
+.vb-totop:hover,.vb-totop:focus-visible{background:var(--blue-dk);color:#fff}
+.vb-totop svg{display:block;width:17px;height:17px}
+@media(prefers-reduced-motion:reduce){.vb-totop{transition:none}}
+
 .demo-modal[hidden]{display:none}
 .demo-modal{position:fixed;inset:0;z-index:1042;background:rgba(11,11,11,.82);padding:30px;overflow:auto;overscroll-behavior:contain}
 .demo-modal.is-open{display:grid;place-items:center}
@@ -1065,6 +1071,7 @@ body.demo-modal-open{overflow:hidden}
   .vibim-mobile-contact img{display:block;width:45px;height:45px;object-fit:contain}
   .vibim-mobile-contact .mobile-demo{width:45px;height:45px;justify-self:center;background:var(--orange);border-radius:12px}
   .vibim-mobile-contact .mobile-demo img{width:25px;height:auto}
+  .vb-totop{right:14px;bottom:calc(72px + env(safe-area-inset-bottom));width:44px;height:44px}
   .vb-footer-intro{grid-template-columns:150px 1fr;gap:24px}
   .vb-footer-grid{grid-template-columns:1.35fr 1fr 1fr;gap:26px}
   .vb-footer-contact{grid-column:1/-1}
@@ -2743,6 +2750,10 @@ body.demo-modal-open{overflow:hidden}
   <a class="mobile-demo js-open-demo" href="#demoModal" aria-haspopup="dialog" aria-label="Get a Free Demo"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/icon_get.png" alt="" width="28" height="24"></a>
 </nav>
 
+<a class="vb-totop" href="#top" aria-label="Go to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 14.5 12 8.5l6 6"/></svg>
+</a>
+
 <div class="demo-modal" id="demoModal" hidden>
   <div class="demo-dialog" role="dialog" aria-modal="true" aria-label="Get a Free Demo form">
     <button class="demo-close" type="button" aria-label="Close form"><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
@@ -3169,6 +3180,29 @@ function autoSlide(railId,interval){
   document.querySelectorAll('.exp-arrow').forEach(b=>{
     b.addEventListener('click',()=>{ const rail=document.getElementById(b.dataset.rail);
       if(rail){const card=rail.firstElementChild;const step=card?card.getBoundingClientRect().width+18:340;rail.scrollBy({left:step*Number(b.dataset.dir),behavior:'smooth'});} });
+  });
+})();
+</script>
+<script>
+(function(){
+  var b=document.querySelector('.vb-totop'); if(!b) return;
+  var on=false,tick=false;
+  function upd(){
+    var y=window.scrollY||document.documentElement.scrollTop||0;
+    var s=y>400;
+    if(s!==on){on=s;b.classList.toggle('is-on',s);}
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!tick){tick=true;window.requestAnimationFrame(upd);}
+  },{passive:true});
+  upd();
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    var soft=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:soft?'auto':'smooth'});
+    var h=document.getElementById('top');
+    if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
   });
 })();
 </script>
