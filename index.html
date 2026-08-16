@@ -1013,6 +1013,29 @@ a strong{font-weight:inherit}
 .vb-totop svg{display:block;width:17px;height:17px}
 @media(prefers-reduced-motion:reduce){.vb-totop{transition:none}}
 
+.bytenum{position:relative;overflow:hidden;background:var(--orange-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bytenum::before,.bytenum::after{content:"";position:absolute;width:42px;height:60px;background:rgba(245,131,25,.20);transform:skewX(-22deg);pointer-events:none;border-radius:4px}
+.bytenum::before{top:15px;left:46px;box-shadow:54px 0 0 rgba(245,131,25,.12)}
+.bytenum::after{bottom:15px;right:68px;box-shadow:-54px 0 0 rgba(245,131,25,.12)}
+.bytenum .wrap{position:relative;z-index:1;padding-block:26px}
+.bn-rail{position:relative;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.bn-rail.grabbing{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.bn-rail::-webkit-scrollbar{display:none}
+.bn-item{flex:0 0 33.333%;scroll-snap-align:center;position:relative;padding:30px 8px 0;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.bn-line{position:absolute;height:2px;background:rgba(245,131,25,.20);z-index:0;pointer-events:none}
+.bn-fill{position:absolute;height:2px;background:var(--orange);z-index:0;pointer-events:none;transition:width .35s var(--ease)}
+.bn-node{position:absolute;top:10px;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#c2ccd6;border:3px solid var(--orange-soft);box-shadow:0 0 0 1px rgba(0,0,0,.05);z-index:1;transition:all .35s var(--ease)}
+.bn-item.is-active .bn-node{background:var(--orange);width:15px;height:15px;box-shadow:0 0 0 1px rgba(245,131,25,.45),0 3px 9px -2px rgba(245,131,25,.6)}
+.bn-num{font-size:clamp(28px,3.6vw,42px);font-weight:800;color:#aab4bf;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;transition:color .35s var(--ease)}
+.bn-item.is-active .bn-num{color:var(--orange)}
+.bn-label{font-size:13px;font-weight:600;color:#9aa7b4;white-space:nowrap;transition:color .35s var(--ease)}
+.bn-item.is-active .bn-label{color:var(--navy)}
+.bn-info{margin-top:3px;width:16px;height:16px;border-radius:50%;border:1px solid #dfe5ec;background:#fff;color:#aab4bf;font-size:9px;font-weight:700;font-family:var(--mono);display:grid;place-items:center;cursor:help;line-height:1;position:relative;transition:all .35s var(--ease)}
+.bn-item.is-active .bn-info{border-color:rgba(245,131,25,.55);color:var(--orange)}
+.bn-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);width:185px;background:#fff;color:var(--ink);border:1px solid var(--line);font-family:var(--sans);font-size:12px;font-weight:400;line-height:1.45;text-align:center;padding:8px 11px;border-radius:8px;box-shadow:0 10px 28px -10px rgba(34,38,42,.3);opacity:0;visibility:hidden;transition:all .2s var(--ease);z-index:6;white-space:normal}
+.bn-info:hover .bn-tip,.bn-info:focus .bn-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.bn-tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:#fff}
+
 .demo-modal[hidden]{display:none}
 .demo-modal{position:fixed;inset:0;z-index:1042;background:rgba(11,11,11,.82);padding:30px;overflow:auto;overscroll-behavior:contain}
 .demo-modal.is-open{display:grid;place-items:center}
@@ -1075,6 +1098,14 @@ body.demo-modal-open{overflow:hidden}
   .vibim-mobile-contact img{display:block;width:45px;height:45px;object-fit:contain}
   .vibim-mobile-contact .mobile-demo{width:45px;height:45px;justify-self:center;background:var(--orange);border-radius:12px}
   .vibim-mobile-contact .mobile-demo img{width:25px;height:auto}
+  .bytenum .wrap{padding-block:14px}
+  .bytenum::before,.bytenum::after{width:26px;height:46px}
+  .bytenum::before{top:10px;left:10px;box-shadow:30px 0 0 rgba(245,131,25,.11)}
+  .bytenum::after{bottom:10px;right:36px;box-shadow:-30px 0 0 rgba(245,131,25,.11)}
+  .bn-item{flex-basis:80%;padding:30px 6px 0;gap:6px}
+  .bn-num{font-size:clamp(38px,13vw,50px)}
+  .bn-label{font-size:14.5px}
+  .bn-info{width:18px;height:18px;font-size:10px}
   .vb-totop{right:14px;bottom:calc(72px + env(safe-area-inset-bottom));width:44px;height:44px}
   .vb-footer-intro{grid-template-columns:150px 1fr;gap:24px}
   .vb-footer-grid{grid-template-columns:1.35fr 1fr 1fr;gap:26px}
@@ -1428,6 +1459,45 @@ body.demo-modal-open{overflow:hidden}
   <div class="lb-overlay lb-overlay-shot" id="ov-6"><a class="lb-back" href="#reviews" aria-label="Close client review gallery"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close client review gallery">&times;</a><img src="https://vibimglobal.com/wp-content/uploads/2026/08/scan-to-bim-client-review-model-quality.jpg" alt="Client email praising the quality of a ViBIM Revit model" width="1200" height="900" draggable="false"></div><nav class="lb-review-nav" aria-label="Client review navigation"><a class="lb-review-arrow" href="#ov-5" aria-label="Previous client review">&#8592;</a><span class="lb-review-count" aria-current="true">6 / 8</span><a class="lb-review-arrow" href="#ov-7" aria-label="Next client review">&#8594;</a></nav></div>
   <div class="lb-overlay lb-overlay-shot" id="ov-7"><a class="lb-back" href="#reviews" aria-label="Close client review gallery"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close client review gallery">&times;</a><img src="https://vibimglobal.com/wp-content/uploads/2026/08/scan-to-bim-client-review-few-errors.jpg" alt="Client email reporting a ViBIM model with few errors or issues" width="1200" height="900" draggable="false"></div><nav class="lb-review-nav" aria-label="Client review navigation"><a class="lb-review-arrow" href="#ov-6" aria-label="Previous client review">&#8592;</a><span class="lb-review-count" aria-current="true">7 / 8</span><a class="lb-review-arrow" href="#ov-8" aria-label="Next client review">&#8594;</a></nav></div>
   <div class="lb-overlay lb-overlay-shot" id="ov-8"><a class="lb-back" href="#reviews" aria-label="Close client review gallery"></a><div class="lb-shot"><a class="lb-close" href="#reviews" aria-label="Close client review gallery">&times;</a><img src="https://vibimglobal.com/wp-content/uploads/2026/08/scan-to-bim-client-review-five-star-quality.jpg" alt="Client email confirming a five-star rating for ViBIM deliverables" width="1200" height="900" draggable="false"></div><nav class="lb-review-nav" aria-label="Client review navigation"><a class="lb-review-arrow" href="#ov-7" aria-label="Previous client review">&#8592;</a><span class="lb-review-count" aria-current="true">8 / 8</span><a class="lb-review-arrow" href="#ov-1" aria-label="Next client review">&#8594;</a></nav></div>
+</section>
+
+<section class="bytenum reveal" aria-label="ViBIM scan to BIM by the numbers">
+  <div class="wrap">
+    <div class="bn-rail" id="bnRail">
+      <span class="bn-line" aria-hidden="true"></span>
+      <span class="bn-fill" aria-hidden="true"></span>
+      <div class="bn-item">
+        <span class="bn-node"></span>
+        <strong class="bn-num" data-target="11" data-suf="+">11+</strong>
+        <strong class="bn-label">years:</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">delivering BIM modeling and outsourcing services since 2014.</span></button>
+      </div>
+      <div class="bn-item">
+        <span class="bn-node"></span>
+        <strong class="bn-num" data-target="1000" data-suf="+">1,000+</strong>
+        <strong class="bn-label">projects delivered:</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">for survey and AEC firms across five markets.</span></button>
+      </div>
+      <div class="bn-item">
+        <span class="bn-node"></span>
+        <strong class="bn-num" data-target="5" data-suf="+">5+</strong>
+        <strong class="bn-label">countries served:</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">the US, UK, Canada, Australia and the EU, all delivered remotely.</span></button>
+      </div>
+      <div class="bn-item">
+        <span class="bn-node"></span>
+        <strong class="bn-num" data-target="99" data-suf="%">99%</strong>
+        <strong class="bn-label">on-time delivery:</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">projects delivered on or before the agreed deadline.</span></button>
+      </div>
+      <div class="bn-item">
+        <span class="bn-node"></span>
+        <strong class="bn-num" data-target="80" data-suf="%">80%</strong>
+        <strong class="bn-label">client retention:</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">clients who have kept working with ViBIM over five years.</span></button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="disc reveal" aria-label="Point cloud to BIM disciplines">
@@ -3208,6 +3278,39 @@ function autoSlide(railId,interval){
     var h=document.getElementById('top');
     if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
   });
+})();
+</script>
+<script>
+(function(){
+  const rail=document.getElementById('bnRail'); if(!rail) return;
+  const items=[...rail.querySelectorAll('.bn-item')];
+  const line=rail.querySelector('.bn-line'), fill=rail.querySelector('.bn-fill');
+  const cx=i=>items[i].offsetLeft+items[i].clientWidth/2;
+  const pad=()=>{items[0].style.marginLeft='0';items[items.length-1].style.marginRight='0';const iw=items[0].getBoundingClientRect().width;const p=Math.max(0,(rail.clientWidth-iw)/2);items[0].style.marginLeft=p+'px';items[items.length-1].style.marginRight=p+'px';};
+  const nearest=()=>{const c=rail.scrollLeft+rail.clientWidth/2;let b=0,bd=1e9;items.forEach((it,k)=>{const d=Math.abs(cx(k)-c);if(d<bd){bd=d;b=k;}});return b;};
+  const fillTo=i=>{if(fill)fill.style.width=Math.max(0,cx(i)-cx(0))+'px';};
+  const mark=()=>{const b=nearest();items.forEach((it,k)=>it.classList.toggle('is-active',k===b));fillTo(b);};
+  const center=(i,sm)=>{rail.scrollTo({left:cx(i)-rail.clientWidth/2,behavior:sm?'smooth':'auto'});};
+  const layout=()=>{pad();if(line){const n=items[0].querySelector('.bn-node').getBoundingClientRect(),r=rail.getBoundingClientRect();const y=(n.top-r.top)+n.height/2-1,x0=cx(0),xN=cx(items.length-1);line.style.top=y+'px';line.style.left=x0+'px';line.style.width=(xN-x0)+'px';fill.style.top=y+'px';fill.style.left=x0+'px';}mark();};
+  let raf;rail.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(mark);},{passive:true});
+  let down=false,sx=0,sl=0;
+  rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;sx=e.clientX;sl=rail.scrollLeft;rail.classList.add('grabbing');rail.setPointerCapture(e.pointerId);});
+  rail.addEventListener('pointermove',e=>{if(down)rail.scrollLeft=sl-(e.clientX-sx);});
+  rail.addEventListener('pointerup',()=>{if(!down)return;down=false;rail.classList.remove('grabbing');center(nearest(),true);});
+  addEventListener('resize',()=>{layout();center(nearest(),false);});
+  const init=()=>{layout();center(0,false);mark();};
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(init);else addEventListener('load',init);
+})();
+(function(){
+  const band=document.querySelector('.bytenum'); if(!band) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const fmt=(n,suf)=>Math.round(n).toLocaleString('en-US')+(suf||'');
+  function countUp(el){
+    const target=parseFloat(el.dataset.target), suf=el.dataset.suf||'', dur=1300, t0=performance.now();
+    function step(t){const p=Math.min(1,(t-t0)/dur);const e=1-Math.pow(1-p,3);el.textContent=fmt(target*e,suf);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(target,suf);}
+    requestAnimationFrame(step);
+  }
+  new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting){band.querySelectorAll('.bn-num').forEach(countUp);ob.disconnect();}})},{threshold:.4}).observe(band);
 })();
 </script>
 </body>
