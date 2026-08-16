@@ -146,7 +146,8 @@ a{color:inherit;text-decoration:none}
 .vp-caption{font-size:12.5px;color:var(--muted);margin-top:11px;text-align:center;font-style:italic}
 
 
-.benefits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;position:relative;z-index:2}
+.hv{position:relative;z-index:1}/* nhot ba-line/ba-handle/hero-badge (z 3-5) vao trong tang z:1 nay, de tooltip z:2 luon noi len tren */
+.benefits{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;position:relative;z-index:2}/* z-index:2 > .hv:1 so benefit tooltips always paint above the hero viewport image */
 .benefit{position:relative;display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;color:var(--navy)}
 .benefit .chk{flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:var(--orange);display:grid;place-items:center;box-shadow:0 2px 6px -2px rgba(245,131,25,.6)}
 .benefit .chk svg{width:12px;height:12px;stroke:#fff;stroke-width:3;fill:none}
@@ -1302,10 +1303,10 @@ body.demo-modal-open{overflow:hidden}
       <div class="intro reveal">
         <input type="checkbox" id="rm-intro" class="rm-toggle" aria-label="Show the full introduction">
         <p class="intro-lead">A <b>scan to BIM service</b>, also called a <b>point cloud to BIM service</b>, converts laser-scan point cloud data into an accurate as-built Revit model of a building as it stands, ready for AEC and facility teams to renovate, retrofit or document it. The quality of the finished model is decided by how closely it matches the source point cloud, the LOD it must reach, and the quality of the input scan.</p>
-        <p class="intro-brand">ViBIM provides <b>point cloud to BIM modeling services</b> covering architecture, structure, MEP and topography, coordinated into one federated as-built. Each project returns as-built drawings, a parametric as-built model, custom Revit families or FM-ready asset data in .RVT, .IFC and .DWG.</p>
+        <p class="intro-brand">ViBIM provides <b>point cloud to BIM modeling services</b> across four disciplines, architecture, structure, MEP and topography, coordinated into one federated as-built. Every point cloud to BIM project returns as-built drawings, a parametric as-built BIM model, custom Revit families or as-built BIM for facility management, in .RVT, .IFC and .DWG.</p>
         <div class="rm-body">
-          <p>Conversion runs a <b>six-phase, 13-step process</b> from any scanner's RCP, RCS or E57 export, with no on-site visit and a QC gate every phase must clear. Accuracy is proven element by element against your scan under ISO 19650, not a blanket millimetre figure, at LOD 100 to 500, most often 300. Delivered work runs from hospitals to heritage churches, and 99% ships on or before the committed date under a dedicated project manager.</p>
-          <p>The same workflow serves nine industries, from clash coordination to facility management and heritage preservation. Turnaround follows modeling hours, from 1 to 4 days to about a month, quoted hourly or lump sum in 12 to 24 hours. <b>Scan to BIM services in the United States</b> lead five markets, served remotely to your timezone, and every new client begins with a free trial model built on their own point cloud.</p>
+          <p>Scan to BIM conversion at ViBIM runs a <b>six-phase, 13-step process</b> that accepts reality capture data from any scanner as RCP, RCS or E57, with no on-site visit and a QC gate every phase must clear. Model accuracy is proven element by element against your scan under ISO 19650, not a blanket millimetre figure, at LOD 100 to 500, most often the detailed LOD 300. Delivered scan to BIM projects run from hospitals to heritage churches, and 99% ship on or before the committed date under a dedicated project manager.</p>
+          <p>The same point cloud to BIM workflow serves nine industries, from clash coordination to facility management and heritage preservation. Scan to BIM turnaround follows modeling hours, from 1 to 4 days to about a month, quoted hourly or lump sum in 12 to 24 hours. <b>Scan to BIM services in the United States</b> lead five markets, served remotely to your timezone, and every new client begins with a free trial model built on their own point cloud.</p>
         </div>
         <label for="rm-intro" class="rm-label"></label>
       </div>
