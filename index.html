@@ -752,7 +752,7 @@ a strong{font-weight:inherit}
 .why-sum{display:flex;align-items:center;gap:13px;padding:17px 16px;cursor:pointer;font-weight:700;font-size:17px;color:#fff;user-select:none}
 .why-ic{flex:0 0 auto;width:24px;height:24px;stroke:#fff;stroke-width:1.7;fill:none}
 .why-panel{display:block;max-height:0;opacity:0;overflow:hidden;padding:0 18px 0 53px;color:#fff;font-size:15px;line-height:1.6;transform:translateY(-5px);transition:max-height .3s var(--ease),opacity .2s ease,padding .3s var(--ease),transform .22s ease}
-.why-panel .num{font-family:var(--mono);font-weight:600}
+.why-panel .num{font-weight:700}/* KHONG dung var(--mono): font mono ep '%' vao be ngang cua 1 chu so nen dau % bi bop det, trong nhu loi hien thi */
 #w1:checked ~ .why-media .pic1,#w2:checked ~ .why-media .pic2,#w3:checked ~ .why-media .pic3,#w4:checked ~ .why-media .pic4,#w5:checked ~ .why-media .pic5{opacity:1;visibility:visible}
 #w1:checked ~ .why-acc .it1 .why-panel,#w2:checked ~ .why-acc .it2 .why-panel,#w3:checked ~ .why-acc .it3 .why-panel,#w4:checked ~ .why-acc .it4 .why-panel,#w5:checked ~ .why-acc .it5 .why-panel{max-height:260px;opacity:1;padding-bottom:20px;transform:none}
 #w1:checked ~ .why-acc .it1,#w2:checked ~ .why-acc .it2,#w3:checked ~ .why-acc .it3,#w4:checked ~ .why-acc .it4,#w5:checked ~ .why-acc .it5{border-left-color:var(--blue)}
