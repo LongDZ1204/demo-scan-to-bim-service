@@ -775,7 +775,10 @@ a strong{font-weight:inherit}
 .exp-meta .nm{font-weight:700;font-size:16px;line-height:1.2}
 .exp-meta .rl{font-size:12.5px;color:rgba(255,255,255,.9);margin-top:3px}
 .exp-hover{position:absolute;inset:0;background:#0c0d0f;color:#fff;padding:22px 20px;display:flex;flex-direction:column;justify-content:center;text-align:center;opacity:0;visibility:hidden;transform:scale(1.02);transition:all .3s var(--ease)}
-.exp:hover .exp-hover,.exp:focus-within .exp-hover{opacity:1;visibility:visible;transform:none}
+.exp:focus-within .exp-hover{opacity:1;visibility:visible;transform:none}
+@media(hover:hover) and (pointer:fine){
+  .exp:hover .exp-hover{opacity:1;visibility:visible;transform:none}
+}
 .exp-hover .nm{font-weight:700;font-size:15.5px;margin-bottom:8px}
 .exp-hover p{font-size:13px;line-height:1.55;color:#fff}
 .exp-hover a{margin-top:13px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px;font-size:13.5px}
@@ -3337,7 +3340,7 @@ function autoSlide(railId,interval){
    Tren man cham, cham vao nut se de lai :focus va trinh duyet khong phai luc nao
    cung tu bo focus khi cham vung trong, nen tooltip dinh lai. Bo focus tuong minh. */
 (function(){
-  const NHOM='.bn-info,.sw-card,.benefit,.logo-item,.ind-card';
+  const NHOM='.bn-info,.sw-card,.benefit,.logo-item,.ind-card,.exp';
   function bo(tru){
     const a=document.activeElement;
     if(!a||a===document.body) return;
