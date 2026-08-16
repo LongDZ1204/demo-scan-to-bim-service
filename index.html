@@ -157,7 +157,10 @@ a strong{font-weight:inherit}
 .b-tip{position:absolute;left:50%;bottom:calc(100% + 10px);width:max(240px,100%);z-index:5;background:#fff;color:var(--ink);border:1px solid var(--line);font-size:13px;font-weight:400;line-height:1.5;text-align:center;padding:10px 14px;border-radius:8px;box-shadow:0 10px 30px -8px rgba(34,38,42,.28);opacity:0;visibility:hidden;transform:translateX(-50%) translateY(4px);transition:all .22s var(--ease)}
 .b-tip::after{content:"";position:absolute;left:50%;margin-left:-7px;top:100%;border:7px solid transparent;border-top-color:#fff;filter:drop-shadow(0 1px 0 var(--line))}
 .benefit:hover,.benefit:focus-within{z-index:30}
-.benefit:hover .b-tip,.benefit:focus-within .b-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.benefit:focus-within .b-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media(hover:hover) and (pointer:fine){
+  .benefit:hover .b-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+}
 
 
 .standards-blk{border-top:1px solid var(--line);padding-top:16px}
@@ -190,7 +193,10 @@ a strong{font-weight:inherit}
 
 .lg-tip{position:absolute;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%) translateY(4px);width:320px;background:#fff;color:var(--ink);border:1px solid var(--line);font-size:12.5px;font-weight:400;line-height:1.45;text-align:center;padding:9px 12px;border-radius:9px;box-shadow:0 12px 32px -8px rgba(34,38,42,.30);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease),visibility 0s .25s;z-index:6}
 .lg-tip::after{content:"";position:absolute;left:50%;margin-left:-7px;top:100%;border:7px solid transparent;border-top-color:#fff;filter:drop-shadow(0 1px 0 var(--line))}
-.logo-item:hover .lg-tip,.logo-item:focus-visible .lg-tip,.logo-item:focus-within .lg-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+.logo-item:focus-visible .lg-tip,.logo-item:focus-within .lg-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+@media(hover:hover) and (pointer:fine){
+  .logo-item:hover .lg-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+}
 .lg-claim{display:block}
 .lg-link{display:inline;color:var(--orange);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .lg-link:hover,.lg-link:focus-visible{color:var(--navy)}
@@ -591,7 +597,10 @@ a strong{font-weight:inherit}
 .sw-role{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 
 .sw-tip{position:absolute;bottom:calc(100% + 15px);left:50%;width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 16px 42px -14px rgba(10,37,64,.42);padding:14px 16px;opacity:0;visibility:hidden;pointer-events:none;transform:translate(calc(-50% + var(--shift,0px)),8px);transition:opacity .25s var(--ease),transform .25s var(--ease);z-index:6}
-.sw-card:hover .sw-tip,.sw-card:focus .sw-tip,.sw-card:focus-within .sw-tip{opacity:1;visibility:visible;transform:translate(calc(-50% + var(--shift,0px)),0)}
+.sw-card:focus .sw-tip,.sw-card:focus-within .sw-tip{opacity:1;visibility:visible;transform:translate(calc(-50% + var(--shift,0px)),0)}
+@media(hover:hover) and (pointer:fine){/* chi chuot that moi mo bang hover; man cham giu :hover lai sau khi cham nen tooltip khong tat */
+  .sw-card:hover .sw-tip{opacity:1;visibility:visible;transform:translate(calc(-50% + var(--shift,0px)),0)}
+}
 .sw-tip::after{content:"";position:absolute;top:100%;left:calc(50% - var(--shift,0px));transform:translateX(-50%);border:8px solid transparent;border-top-color:#fff}
 .sw-tip .sw-tip-t{font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
 .sw-tip p{font-size:12px;color:var(--ink);line-height:1.5;margin:0}
@@ -788,7 +797,10 @@ a strong{font-weight:inherit}
 .ind-card img{width:100%;height:225px;flex:0 0 225px;object-fit:cover;object-position:center;display:block;background:var(--bg-soft)}
 .ind-cap{height:60px;flex:0 0 60px;background:var(--orange);color:#fff;font-weight:700;font-size:16px;text-align:center;padding:12px 14px;display:flex;align-items:center;justify-content:center}
 .ind-tip{position:absolute;left:0;right:0;top:0;height:225px;background:rgba(16,19,21,.93);color:#fff;padding:22px 20px;display:flex;align-items:center;text-align:center;font-size:14px;line-height:1.55;opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s var(--ease)}
-.ind-card:hover .ind-tip,.ind-card:focus .ind-tip,.ind-card:focus-within .ind-tip{opacity:1;visibility:visible}
+.ind-card:focus .ind-tip,.ind-card:focus-within .ind-tip{opacity:1;visibility:visible}
+@media(hover:hover) and (pointer:fine){
+  .ind-card:hover .ind-tip{opacity:1;visibility:visible}
+}
 .ind-card:focus-visible{outline:2px solid var(--orange-dk);outline-offset:2px}
 
 
@@ -1038,7 +1050,10 @@ a strong{font-weight:inherit}
 .bn-info{margin-top:3px;width:16px;height:16px;border-radius:50%;border:1px solid #dfe5ec;background:#fff;color:#aab4bf;font-size:9px;font-weight:700;font-family:var(--mono);display:grid;place-items:center;cursor:help;line-height:1;position:relative;transition:all .35s var(--ease)}
 .bn-item.is-active .bn-info{border-color:rgba(245,131,25,.55);color:var(--orange)}
 .bn-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);width:185px;background:#fff;color:var(--ink);border:1px solid var(--line);font-family:var(--sans);font-size:12px;font-weight:400;line-height:1.45;text-align:center;padding:8px 11px;border-radius:8px;box-shadow:0 10px 28px -10px rgba(34,38,42,.3);opacity:0;visibility:hidden;transition:all .2s var(--ease);z-index:6;white-space:normal}
-.bn-info:hover .bn-tip,.bn-info:focus .bn-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.bn-info:focus .bn-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media(hover:hover) and (pointer:fine){/* xem ghi chu o .sw-card ben tren */
+  .bn-info:hover .bn-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+}
 .bn-tip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:#fff}
 
 .demo-modal[hidden]{display:none}
@@ -1474,32 +1489,32 @@ body.demo-modal-open{overflow:hidden}
       <div class="bn-item">
         <span class="bn-node"></span>
         <strong class="bn-num" data-target="11" data-suf="+">11+</strong>
-        <strong class="bn-label">years:</strong>
-        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">delivering BIM modeling and outsourcing services since 2014.</span></button>
+        <strong class="bn-label">years</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">Delivering BIM modeling and outsourcing services since 2014.</span></button>
       </div>
       <div class="bn-item">
         <span class="bn-node"></span>
         <strong class="bn-num" data-target="1000" data-suf="+">1,000+</strong>
-        <strong class="bn-label">projects delivered:</strong>
-        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">for survey and AEC firms across five markets.</span></button>
+        <strong class="bn-label">projects delivered</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">For survey and AEC firms across five markets.</span></button>
       </div>
       <div class="bn-item">
         <span class="bn-node"></span>
         <strong class="bn-num" data-target="5" data-suf="+">5+</strong>
-        <strong class="bn-label">countries served:</strong>
-        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">the US, UK, Canada, Australia and the EU, all delivered remotely.</span></button>
+        <strong class="bn-label">countries served</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">The US, UK, Canada, Australia and the EU, all delivered remotely.</span></button>
       </div>
       <div class="bn-item">
         <span class="bn-node"></span>
         <strong class="bn-num" data-target="99" data-suf="%">99%</strong>
-        <strong class="bn-label">on-time delivery:</strong>
-        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">projects delivered on or before the agreed deadline.</span></button>
+        <strong class="bn-label">on-time delivery</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">Projects delivered on or before the agreed deadline.</span></button>
       </div>
       <div class="bn-item">
         <span class="bn-node"></span>
         <strong class="bn-num" data-target="80" data-suf="%">80%</strong>
-        <strong class="bn-label">client retention:</strong>
-        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">clients who have kept working with ViBIM over five years.</span></button>
+        <strong class="bn-label">client retention</strong>
+        <button class="bn-info" aria-label="Detail">i<span class="bn-tip">Clients who have kept working with ViBIM over five years.</span></button>
       </div>
     </div>
   </div>
@@ -1889,61 +1904,61 @@ body.demo-modal-open{overflow:hidden}
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk Revit">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-revit-1-300x174.png" alt="Autodesk Revit logo"></span>
           <b class="sw-name">Autodesk Revit</b>
-          <div class="sw-tip"><p>the BIM authoring platform we model the as-built in, building parametric geometry element by element into native .RVT.</p></div>
+          <div class="sw-tip"><p>The BIM authoring platform we model the as-built in, building parametric geometry element by element into native .RVT.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk ReCap Pro">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-recap-pro-1-300x174.png" alt="Autodesk ReCap Pro logo"></span>
           <b class="sw-name">Autodesk ReCap Pro</b>
-          <div class="sw-tip"><p>the point cloud processor that registers, cleans and indexes raw scans into RCP/RCS for Revit to link.</p></div>
+          <div class="sw-tip"><p>The point cloud processor that registers, cleans and indexes raw scans into RCP/RCS for Revit to link.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk Navisworks Manage">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-navisworks-manage-1-300x174.png" alt="Autodesk Navisworks Manage logo"></span>
           <b class="sw-name">Autodesk Navisworks Manage</b>
-          <div class="sw-tip"><p>the coordination tool we run clash detection and model-vs-scan deviation checks in.</p></div>
+          <div class="sw-tip"><p>The coordination tool we run clash detection and model-vs-scan deviation checks in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="AutoCAD">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autocad-300x174.png" alt="AutoCAD logo" loading="lazy" width="300" height="174"></span>
           <b class="sw-name">AutoCAD</b>
-          <div class="sw-tip"><p>the drafting tool we produce the as-built DWG sheets in.</p></div>
+          <div class="sw-tip"><p>The drafting tool we produce the as-built DWG sheets in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Autodesk Construction Cloud (ACC)">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/autodesk-construction-cloud-acc-300x174.png" alt="Autodesk Construction Cloud (ACC) logo" loading="lazy" width="300" height="174"></span>
           <b class="sw-name">Autodesk Construction Cloud (ACC)</b>
-          <div class="sw-tip"><p>the cloud platform we collaborate and share models on, formerly BIM 360.</p></div>
+          <div class="sw-tip"><p>The cloud platform we collaborate and share models on, formerly BIM 360.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Cintoo Cloud">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2026/08/cintoo-cloud-point-cloud-streaming-logo.png" alt="Cintoo Cloud logo"></span>
           <b class="sw-name">Cintoo Cloud</b>
-          <div class="sw-tip"><p>the streaming service that handles very large point clouds without copying them to every machine.</p></div>
+          <div class="sw-tip"><p>The streaming service that handles very large point clouds without copying them to every machine.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="BIMcollab">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2026/08/bimcollab-bim-issue-tracker-logo.png" alt="BIMcollab logo"></span>
           <b class="sw-name">BIMcollab</b>
-          <div class="sw-tip"><p>the issue tracker we manage clashes and review comments with clients in.</p></div>
+          <div class="sw-tip"><p>The issue tracker we manage clashes and review comments with clients in.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Leica TrueView">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/trueview-300x174.png" alt="Leica TrueView logo"></span>
           <b class="sw-name">Leica TrueView</b>
-          <div class="sw-tip"><p>the viewer clients open to reference the point cloud online.</p></div>
+          <div class="sw-tip"><p>The viewer clients open to reference the point cloud online.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal Revit Add-in Tools">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/internal-automation-tools-300x174.png.webp" alt="ViBIM internal Revit add-in and automation tools logo"></span>
           <b class="sw-name">Internal Revit Add-in Tools</b>
-          <div class="sw-tip"><p>our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion.</p></div>
+          <div class="sw-tip"><p>Our proprietary Revit API and Dynamo automations for repetitive geometry and in-place to loadable family conversion.</p></div>
         </div>
 
         <div class="sw-card" tabindex="0" role="group" aria-label="Internal QA/QC Tool">
           <span class="sw-ic"><img src="https://vibimglobal.com/wp-content/uploads/2025/07/internal-qa-qc-tool-300x174.png.webp" alt="ViBIM internal QA/QC tool logo"></span>
           <b class="sw-name">Internal QA/QC Tool</b>
-          <div class="sw-tip"><p>our proprietary pre-analysis tool that automatically flags missing, misaligned and out-of-tolerance elements before the two-layer QC review.</p></div>
+          <div class="sw-tip"><p>Our proprietary pre-analysis tool that automatically flags missing, misaligned and out-of-tolerance elements before the two-layer QC review.</p></div>
         </div>
 
       </div>
@@ -3316,6 +3331,23 @@ function autoSlide(railId,interval){
     requestAnimationFrame(step);
   }
   new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting){band.querySelectorAll('.bn-num').forEach(countUp);ob.disconnect();}})},{threshold:.4}).observe(band);
+})();
+
+/* Dong tooltip khi cham ra cho khac.
+   Tren man cham, cham vao nut se de lai :focus va trinh duyet khong phai luc nao
+   cung tu bo focus khi cham vung trong, nen tooltip dinh lai. Bo focus tuong minh. */
+(function(){
+  const NHOM='.bn-info,.sw-card,.benefit,.logo-item,.ind-card';
+  function bo(tru){
+    const a=document.activeElement;
+    if(!a||a===document.body) return;
+    const t=a.closest&&a.closest(NHOM);
+    if(t&&t!==tru) t.blur();
+  }
+  document.addEventListener('pointerdown',e=>{
+    bo(e.target.closest?e.target.closest(NHOM):null);
+  },true);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') bo(null); });
 })();
 </script>
 </body>
