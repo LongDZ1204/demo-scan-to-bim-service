@@ -980,8 +980,11 @@ a strong{font-weight:inherit}
 
 
 .vb-shell{width:min(100% - 40px,1240px);margin-inline:auto}
+:root{--vb-topbar-h:30px;--vb-header-h:120px}
+html.vb-scrolled{--vb-topbar-h:0px;--vb-header-h:90px}
+@media (prefers-reduced-motion:reduce){.vb-topbar{transition:none}}
 .vb-site-header{position:sticky;top:0;z-index:80;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.vb-topbar{height:30px;background:var(--orange);color:#fff}
+.vb-topbar{height:var(--vb-topbar-h);background:var(--orange);color:#fff;overflow:hidden;transition:height .22s var(--ease)}
 .vb-topbar-inner{height:100%;display:flex;align-items:center;justify-content:flex-end;font-size:12px}
 .vb-top-contact{display:inline-flex;align-items:center;gap:5px;color:#fff;white-space:nowrap}
 .vb-top-contact i{flex:0 0 auto;font-size:12px;line-height:1}
@@ -1103,7 +1106,7 @@ body.demo-modal-open{overflow:hidden}
 
 @media(max-width:920px){
   .vb-shell{width:min(100% - 28px,1240px)}
-  .vb-topbar{height:30px}
+  .vb-topbar{height:var(--vb-topbar-h)}
   .vb-topbar-inner{justify-content:center;font-size:13px}
   .vb-top-divider,.vb-top-phone{display:none}
   .vb-mainbar{height:90px}
@@ -1114,7 +1117,7 @@ body.demo-modal-open{overflow:hidden}
   .vb-menu-toggle{position:absolute;left:0;display:grid;gap:5px;width:36px;height:36px;padding:8px;border:0;background:transparent;cursor:pointer}
   .vb-menu-toggle span{display:block;width:24px;height:2px;background:#777;border-radius:2px}
   .vb-mobile-spacer{display:block;position:absolute;right:0;width:36px}
-  .vb-mobile-menu{display:grid;position:fixed;left:0;top:120px;width:min(330px,86vw);max-height:calc(100vh - 120px);overflow:auto;background:#fff;padding:14px 20px 24px;box-shadow:8px 18px 34px rgba(0,0,0,.18);transform:translateX(-105%);transition:transform .25s ease;z-index:79}
+  .vb-mobile-menu{display:grid;position:fixed;left:0;top:var(--vb-header-h);width:min(330px,86vw);max-height:calc(100vh - var(--vb-header-h));overflow:auto;background:#fff;padding:14px 20px 24px;box-shadow:8px 18px 34px rgba(0,0,0,.18);transform:translateX(-105%);transition:transform .25s ease;z-index:79}
   .vb-mobile-menu.is-open{transform:none}
   .vb-mobile-menu a{padding:12px 4px;border-bottom:1px solid var(--line);font-weight:600;color:#555}
   .vibim-contact-rail{display:none}
@@ -3293,6 +3296,18 @@ function autoSlide(railId,interval){
 })();
 </script>
 <script>
+(function(){
+  // Top bar (dải cam) chỉ hiện khi đang ở đỉnh trang, giống trang live.
+  var root=document.documentElement, on=false, tick=false;
+  function upd(){
+    var y=window.scrollY||root.scrollTop||0;
+    var s=y>8;                       // ngưỡng 8px để không giật khi màn hình nảy
+    if(s!==on){on=s;root.classList.toggle('vb-scrolled',s);}
+    tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+})();
 (function(){
   var b=document.querySelector('.vb-totop'); if(!b) return;
   var on=false,tick=false;
