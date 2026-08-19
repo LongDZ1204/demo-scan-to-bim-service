@@ -1002,7 +1002,7 @@ html.vb-scrolled{--vb-topbar-h:0px;--vb-header-h:90px}
 .vb-dropdown-services{min-width:260px}
 .vb-dropdown a{display:block;padding:9px 18px;font-size:14px;font-weight:500;color:#575757;white-space:nowrap}
 .vb-nav-group:hover .vb-dropdown,.vb-nav-group:focus-within .vb-dropdown{opacity:1;visibility:visible;transform:none}
-.vb-menu-toggle,.vb-mobile-spacer,.vb-mobile-menu{display:none}
+.vb-menu-toggle,.vb-mobile-spacer,.vb-mobile-overlay{display:none}
 
 .vb-footer{background:#0069b6;color:#fff;padding:30px 0}
 .vb-footer-intro{display:grid;grid-template-columns:190px 1fr;align-items:center;gap:34px;padding-bottom:25px;border-bottom:1px solid rgba(255,255,255,.35)}
@@ -1117,9 +1117,36 @@ body.demo-modal-open{overflow:hidden}
   .vb-menu-toggle{position:absolute;left:0;display:grid;gap:5px;width:36px;height:36px;padding:8px;border:0;background:transparent;cursor:pointer}
   .vb-menu-toggle span{display:block;width:24px;height:2px;background:#777;border-radius:2px}
   .vb-mobile-spacer{display:block;position:absolute;right:0;width:36px}
-  .vb-mobile-menu{display:grid;position:fixed;left:0;top:var(--vb-header-h);width:min(330px,86vw);max-height:calc(100vh - var(--vb-header-h));overflow:auto;background:#fff;padding:14px 20px 24px;box-shadow:8px 18px 34px rgba(0,0,0,.18);transform:translateX(-105%);transition:transform .25s ease;z-index:79}
-  .vb-mobile-menu.is-open{transform:none}
-  .vb-mobile-menu a{padding:12px 4px;border-bottom:1px solid var(--line);font-weight:600;color:#555}
+  .vb-mobile-overlay{display:block;position:fixed;inset:0;z-index:310;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility 0s linear .25s}
+  .vb-mobile-overlay.is-open{opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+  .vb-mobile-menu{position:absolute;inset:0 auto 0 0;width:300px;max-width:calc(100vw - 40px);overflow-y:auto;overscroll-behavior:contain;background:rgba(255,255,255,.95);box-shadow:8px 0 30px rgba(0,0,0,.22);transform:translateX(-102%);transition:transform .28s ease;padding:30px 0}
+  .vb-mobile-overlay.is-open .vb-mobile-menu{transform:none}
+  .vb-mobile-close{position:absolute;top:0;right:0;width:40px;height:40px;display:grid;place-items:center;border:0;background:transparent;color:#fff;cursor:pointer;z-index:2}
+  .vb-mobile-close svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+  .vb-mobile-close:focus-visible{outline:2px solid rgba(255,255,255,.9);outline-offset:2px}
+  .vb-mobile-brand{display:block;width:208px;max-width:calc(100% - 40px);margin:20px}
+  .vb-mobile-brand img{display:block;width:100%;height:auto}
+  .vb-mobile-search{margin:0;padding:20px}
+  .vb-mobile-search-inner{height:40px;display:flex;align-items:center;border:1px solid rgba(0,0,0,.09);border-radius:999px;background:rgba(0,0,0,.03);overflow:hidden}
+  .vb-mobile-search input{min-width:0;flex:1;height:100%;border:0;background:transparent;padding:0 12px;font:400 16px/1.6 var(--sans);color:#555;outline:0}
+  .vb-mobile-search input::placeholder{color:#777;opacity:1}
+  .vb-mobile-search button{flex:0 0 40px;height:100%;display:grid;place-items:center;border:0;background:transparent;color:#111;cursor:pointer}
+  .vb-mobile-search button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+  .vb-mobile-nav-list{list-style:none;margin:0;padding:0;border-top:1px solid #e1e1e1}
+  .vb-mobile-nav-list>li{border-bottom:1px solid #e1e1e1}
+  .vb-mobile-nav-row{display:grid;grid-template-columns:minmax(0,1fr) 50px;align-items:stretch}
+  .vb-mobile-nav-list>li>a,.vb-mobile-nav-row>a{display:flex;align-items:center;min-height:48px;padding:15px 0 15px 20px;font-size:11.2px;font-weight:700;line-height:1.6;text-transform:uppercase;color:#737373}
+  .vb-mobile-subtoggle{display:grid;place-items:center;border:0;background:transparent;color:#666;cursor:pointer}
+  .vb-mobile-subtoggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+  .vb-mobile-subtoggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .vb-mobile-submenu{display:none;list-style:none;margin:0 0 0 7px;padding:0;background:transparent}
+  .vb-mobile-submenu.is-open{display:block}
+  .vb-mobile-submenu a{display:block;padding:5px 0 5px 20px;font-size:14px;font-weight:400;line-height:1.6;color:#666}
+  .vb-mobile-socials{display:flex;gap:8px;padding:20px}
+  .vb-mobile-socials a{display:block;width:35px;height:35px;border-radius:50%}
+  .vb-mobile-socials img{display:block;width:35px;height:35px;object-fit:contain}
+  body.vb-mobile-menu-open{overflow:hidden}
+  body.vb-mobile-menu-open .vb-site-header{z-index:320}
   .vibim-contact-rail{display:none}
   .vibim-mobile-contact{position:fixed;left:0;right:0;bottom:0;z-index:99;height:60px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:#fff;border-top:1px solid #d8d8d8;box-shadow:0 -4px 18px rgba(0,0,0,.13);padding:5px max(10px,env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left))}
   .vibim-mobile-contact a{height:50px;display:grid;place-items:center;border-right:2px solid rgba(245,131,25,.75)}
@@ -1265,7 +1292,7 @@ body.demo-modal-open{overflow:hidden}
   </div>
   <div class="vb-mainbar">
     <div class="vb-shell vb-header-inner">
-      <button class="vb-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vbMobileMenu">
+      <button class="vb-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="vbMobileOverlay">
         <span></span><span></span><span></span>
       </button>
       <a class="vb-logo" href="https://vibimglobal.com/" aria-label="ViBIM homepage">
@@ -1297,14 +1324,57 @@ body.demo-modal-open{overflow:hidden}
       <span class="vb-mobile-spacer" aria-hidden="true"></span>
     </div>
   </div>
-  <nav class="vb-mobile-menu" id="vbMobileMenu" aria-label="Mobile navigation" aria-hidden="true" inert>
-    <a href="https://vibimglobal.com/">Home</a>
-    <a href="https://vibimglobal.com/about-us/">About Us</a>
-    <a href="https://vibimglobal.com/point-cloud-to-bim-services/">Services</a>
-    <a href="https://vibimglobal.com/projects/">Projects</a>
-    <a href="https://vibimglobal.com/blog/">Blogs</a>
-    <a href="https://vibimglobal.com/contact-us/">Contact Us</a>
-  </nav>
+  <div class="vb-mobile-overlay" id="vbMobileOverlay" aria-hidden="true">
+    <button class="vb-mobile-close" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <nav class="vb-mobile-menu" id="vbMobileMenu" aria-label="Mobile navigation">
+      <a class="vb-mobile-brand" href="https://vibimglobal.com/" aria-label="ViBIM homepage">
+        <img src="https://vibimglobal.com/wp-content/uploads/2025/07/logo-vibim-3-1024x322.png" alt="ViBIM — Visualize Your Vision" width="1020" height="321">
+      </a>
+      <form class="vb-mobile-search" action="https://vibimglobal.com/" method="get" role="search">
+        <div class="vb-mobile-search-inner">
+          <input type="search" name="s" placeholder="Search..." aria-label="Search ViBIM" autocomplete="off">
+          <button type="submit" aria-label="Submit search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.7-3.7"/></svg></button>
+        </div>
+      </form>
+      <ul class="vb-mobile-nav-list">
+        <li><a href="https://vibimglobal.com/">Home</a></li>
+        <li>
+          <div class="vb-mobile-nav-row">
+            <a href="https://vibimglobal.com/about-us/">About Us</a>
+            <button class="vb-mobile-subtoggle" type="button" aria-label="Toggle About Us submenu" aria-expanded="false" aria-controls="vbMobileAbout"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+          </div>
+          <ul class="vb-mobile-submenu" id="vbMobileAbout">
+            <li><a href="https://vibimglobal.com/our-team/">Our Team</a></li>
+            <li><a href="https://vibimglobal.com/testimonials/">Testimonials</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="vb-mobile-nav-row">
+            <a href="https://vibimglobal.com/point-cloud-to-bim-services/">Services</a>
+            <button class="vb-mobile-subtoggle" type="button" aria-label="Toggle Services submenu" aria-expanded="false" aria-controls="vbMobileServices"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+          </div>
+          <ul class="vb-mobile-submenu" id="vbMobileServices">
+            <li><a href="https://vibimglobal.com/point-cloud-to-bim-services/">Scan to BIM</a></li>
+            <li><a href="https://vibimglobal.com/architectural-scan-to-bim-services/">Architecture Scan to BIM</a></li>
+            <li><a href="https://vibimglobal.com/structural-bim-modeling/">Structural Scan to BIM</a></li>
+            <li><a href="https://vibimglobal.com/mep-bim-modeling/">MEP Scan to BIM</a></li>
+            <li><a href="https://vibimglobal.com/topography-bim-modeling/">Topography Scan to BIM</a></li>
+          </ul>
+        </li>
+        <li><a href="https://vibimglobal.com/projects/">Projects</a></li>
+        <li><a href="https://vibimglobal.com/blog/">Blogs</a></li>
+        <li><a href="https://vibimglobal.com/contact-us/">Contact Us</a></li>
+      </ul>
+      <div class="vb-mobile-socials" aria-label="ViBIM social media">
+        <a href="https://www.linkedin.com/company/vibim/" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-1-2.png" alt="LinkedIn" width="46" height="46"></a>
+        <a href="https://www.facebook.com/BIMconsult" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-2-2.png" alt="Facebook" width="46" height="46"></a>
+        <a href="https://www.youtube.com/@ScanToBim_ViBIM" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-3-1.png" alt="YouTube" width="46" height="46"></a>
+        <a href="https://x.com/vibimscantobim" target="_blank" rel="nofollow noopener"><img src="https://vibimglobal.com/wp-content/uploads/2025/06/image-4-1.png" alt="X" width="46" height="46"></a>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <main>
@@ -2880,17 +2950,38 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 
 const vbMenuToggle=document.querySelector('.vb-menu-toggle');
+const vbMobileOverlay=document.getElementById('vbMobileOverlay');
 const vbMobileMenu=document.getElementById('vbMobileMenu');
-if(vbMenuToggle&&vbMobileMenu){
-  vbMenuToggle.addEventListener('click',()=>{
-    const open=vbMobileMenu.classList.toggle('is-open');
-    vbMenuToggle.setAttribute('aria-expanded',String(open));
-    vbMobileMenu.setAttribute('aria-hidden',String(!open));vbMobileMenu.toggleAttribute('inert',!open);
-  });
-  vbMobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
-    vbMobileMenu.classList.remove('is-open');
+const vbMobileClose=document.querySelector('.vb-mobile-close');
+if(vbMenuToggle&&vbMobileOverlay&&vbMobileMenu){
+  const openMobileMenu=()=>{
+    vbMobileOverlay.classList.add('is-open');
+    vbMobileOverlay.setAttribute('aria-hidden','false');
+    vbMenuToggle.setAttribute('aria-expanded','true');
+    vbMenuToggle.setAttribute('aria-label','Close menu');
+    document.body.classList.add('vb-mobile-menu-open');
+    vbMobileClose?.focus();
+  };
+  const closeMobileMenu=()=>{
+    vbMobileOverlay.classList.remove('is-open');
+    vbMobileOverlay.setAttribute('aria-hidden','true');
     vbMenuToggle.setAttribute('aria-expanded','false');
-    vbMobileMenu.setAttribute('aria-hidden','true');vbMobileMenu.setAttribute('inert','');
+    vbMenuToggle.setAttribute('aria-label','Open menu');
+    document.body.classList.remove('vb-mobile-menu-open');
+    vbMenuToggle.focus();
+  };
+  vbMenuToggle.addEventListener('click',()=>vbMenuToggle.getAttribute('aria-expanded')==='true'?closeMobileMenu():openMobileMenu());
+  vbMobileClose?.addEventListener('click',closeMobileMenu);
+  vbMobileOverlay.addEventListener('click',event=>{if(event.target===vbMobileOverlay)closeMobileMenu();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&vbMobileOverlay.classList.contains('is-open'))closeMobileMenu();});
+  vbMobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+    closeMobileMenu();
+  }));
+  vbMobileMenu.querySelectorAll('.vb-mobile-subtoggle').forEach(toggle=>toggle.addEventListener('click',()=>{
+    const submenu=document.getElementById(toggle.getAttribute('aria-controls'));
+    const open=toggle.getAttribute('aria-expanded')!=='true';
+    toggle.setAttribute('aria-expanded',String(open));
+    submenu?.classList.toggle('is-open',open);
   }));
 }
 
